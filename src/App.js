@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function Contents(props){
+function AddContents(props){
   const [contents,setContents] = useState({
     title: '',
     desc: ''
@@ -16,8 +16,7 @@ function Contents(props){
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target);
-    props.onSave(contents);
+    props.saveContents(contents); //props로 전달된 함수 실행
   }
 
   return(
@@ -31,37 +30,33 @@ function Contents(props){
   );
 }
 
-function Template(){
-  var [userData,setData] = useState({});
-
-  function onSaveContents(data){
-    console.log(data);
-    setData(data);
-  }
-
+function ShowContents(props){
+  console.log(props);
   return(
-    <body>
-      <section>
-        <header>User status</header>
-        <nav>menu</nav>
-        <article>
-        </article>
-        <Contents onSave={onSaveContents}></Contents>
-      </section>
-    </body>
-  );
+    <tbody>
+      <tr>
+        <td>{props.row.no}</td>
+        <td>{props.row.title}</td>
+        <td>{props.row.writer}</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  )
 }
 
-function App() {
-  var [userData,setData] = useState({
+function Template(){
+  var [Data,setData] = useState({
+    max:2, //여기 수정해야함
     boards:
     [
       {
+        no:'1',
         title:'Hello',
         desc:'HI',
         writer:'Jin'
       },
       {
+        no:'2',
         title:'Good bye',
         desc:'GG',
         writer:'Roh'
@@ -69,6 +64,42 @@ function App() {
     ]
   });
 
+  function saveContents(data){
+    console.log('Save data: ' + data);
+    var boards = Data.boards.concat(data);
+    setData({boards});
+  }
+
+  return(
+    <body>
+      <section>
+        <header>React Board</header>
+        <nav>menu</nav>
+        <article>
+          <table className='table'>
+            <thead>
+              <tr>
+                <th className='No'>번호</th>
+                <th className='Title'>제목</th>
+                <th className='Writer'>작성자</th>
+                <th className='View'>조회수</th>
+              </tr>
+            </thead>
+            {
+              Data.boards.map( row =>
+              (
+                <ShowContents row = {row}></ShowContents>)
+              )       
+            }   
+          </table>
+        </article>
+        <AddContents saveContents={saveContents}></AddContents>
+      </section>
+    </body>
+  );
+}
+
+function App() {
   return (
     <div>
       <Template></Template>
