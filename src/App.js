@@ -3,13 +3,16 @@ import './App.css';
 
 function AddContents(props){
   const [contents,setContents] = useState({
+    num: '',
     title: '',
     desc: ''
   });
 
   function handleChange(e){
+    console.log(e.target.value);
     setContents({
       ...contents,
+      num: props.dataSize+1,
       [e.target.name]:e.target.value
     });
   }
@@ -35,7 +38,7 @@ function ShowContents(props){
   return(
     <tbody>
       <tr>
-        <td>{props.row.no}</td>
+        <td>{props.row.num}</td>
         <td>{props.row.title}</td>
         <td>{props.row.writer}</td>
         <td>0</td>
@@ -46,24 +49,25 @@ function ShowContents(props){
 
 function Template(){
   var [Data,setData] = useState({
-    max:2, //여기 수정해야함
+    max:2, 
     boards:
     [
       {
-        no:'1',
+        num:'1',
         title:'Hello',
         desc:'HI',
         writer:'Jin'
       },
       {
-        no:'2',
+        num:'2',
         title:'Good bye',
         desc:'GG',
         writer:'Roh'
       }
     ]
   });
-
+  var dataSize = Object.keys(Data.boards).length; // Data의 크기 번호 설정을 위해 사용
+  
   function saveContents(data){
     console.log('Save data: ' + data);
     var boards = Data.boards.concat(data);
@@ -79,7 +83,7 @@ function Template(){
           <table className='table'>
             <thead>
               <tr>
-                <th className='No'>번호</th>
+                <th className='Num'>번호</th>
                 <th className='Title'>제목</th>
                 <th className='Writer'>작성자</th>
                 <th className='View'>조회수</th>
@@ -93,7 +97,7 @@ function Template(){
             }   
           </table>
         </article>
-        <AddContents saveContents={saveContents}></AddContents>
+        <AddContents saveContents={saveContents} dataSize={dataSize}></AddContents>
       </section>
     </body>
   );
