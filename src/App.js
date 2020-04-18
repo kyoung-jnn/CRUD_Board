@@ -9,12 +9,14 @@ function AddContents(props){
   });
 
   function handleChange(e){
-    console.log(e.target.value);
     setContents({
       ...contents,
       num: props.dataSize+1,
-      [e.target.name]:e.target.value
+      [e.target.name]:e.target.value,
+      date:new Date()
     });
+
+    console.log(contents);
   }
 
   function handleSubmit(e) {
@@ -33,6 +35,10 @@ function AddContents(props){
   );
 }
 
+function DelContents(){
+  console.log('del');
+}
+
 function ShowContents(props){
   console.log(props);
   return(
@@ -41,7 +47,8 @@ function ShowContents(props){
         <td>{props.row.num}</td>
         <td>{props.row.title}</td>
         <td>{props.row.writer}</td>
-        <td>0</td>
+        <td>{props.row.date.toLocaleDateString('kr-KR')}</td>
+        <td><button className='delBtn' onClick={DelContents}>X</button></td>
       </tr>
     </tbody>
   )
@@ -56,16 +63,19 @@ function Template(){
         num:'1',
         title:'Hello',
         desc:'HI',
-        writer:'Jin'
+        writer:'Jin',
+        date:new Date()
       },
       {
         num:'2',
         title:'Good bye',
         desc:'GG',
-        writer:'Roh'
+        writer:'Roh',
+        date:new Date()
       }
     ]
   });
+
   var dataSize = Object.keys(Data.boards).length; // Data의 크기 번호 설정을 위해 사용
   
   function saveContents(data){
@@ -86,15 +96,16 @@ function Template(){
                 <th className='Num'>번호</th>
                 <th className='Title'>제목</th>
                 <th className='Writer'>작성자</th>
-                <th className='View'>조회수</th>
+                <th className='Date'>날짜</th>
+                <th className='Del'>삭제</th>
               </tr>
             </thead>
             {
               Data.boards.map( row =>
-              (
-                <ShowContents row = {row}></ShowContents>)
+               <ShowContents row = {row}></ShowContents> 
               )       
             }   
+            
           </table>
         </article>
         <AddContents saveContents={saveContents} dataSize={dataSize}></AddContents>
