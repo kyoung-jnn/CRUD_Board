@@ -11,12 +11,9 @@ function AddContents(props){
   function handleChange(e){
     setContents({
       ...contents,
-      num: props.dataSize+1,
       [e.target.name]:e.target.value,
       date:new Date()
     });
-
-    console.log(contents);
   }
 
   function handleSubmit(e) {
@@ -35,12 +32,12 @@ function AddContents(props){
   );
 }
 
-function DelContents(){
-  console.log('del');
-}
-
 function ShowContents(props){
-  console.log(props);
+  function handleDelete(){
+    console.log('delete contents:' + props.row.num);
+    props.handleDelete(props.row.num);
+  }
+
   return(
     <tbody>
       <tr>
@@ -48,26 +45,27 @@ function ShowContents(props){
         <td>{props.row.title}</td>
         <td>{props.row.writer}</td>
         <td>{props.row.date.toLocaleDateString('kr-KR')}</td>
-        <td><button className='delBtn' onClick={DelContents}>X</button></td>
+        <td><button className='delBtn' onClick={handleDelete}>X</button></td>
       </tr>
     </tbody>
   )
 }
 
+
 function Template(){
   var [Data,setData] = useState({
-    max:2, 
+    total:2, 
     boards:
     [
       {
-        num:'1',
+        num:1,
         title:'Hello',
         desc:'HI',
         writer:'Jin',
         date:new Date()
       },
       {
-        num:'2',
+        num:2,
         title:'Good bye',
         desc:'GG',
         writer:'Roh',
@@ -76,14 +74,25 @@ function Template(){
     ]
   });
 
-  var dataSize = Object.keys(Data.boards).length; // Data의 크기 번호 설정을 위해 사용
-  
   function saveContents(data){
-    console.log('Save data: ' + data);
-    var boards = Data.boards.concat(data);
-    setData({boards});
+    setData({total:++Data.total,
+             boards:Data.boards.concat({...data,num:Data.total})
+            });
   }
 
+  function delContents(delNum){
+    setData({total:--Data.total,
+      boards: Data.boards.filter(function(row){
+        return row.num !== delNum //화살표 함수 사용안함 중괄호 안에서는 return 해야함
+      })
+    })
+  }
+
+  function arrangeContents(){
+    
+  }
+  console.log('new data: ' + JSON.stringify(Data));
+  arrangeContents();
   return(
     <body>
       <section>
@@ -102,13 +111,13 @@ function Template(){
             </thead>
             {
               Data.boards.map( row =>
-               <ShowContents row = {row}></ShowContents> 
+               <ShowContents row = {row} handleDelete={delContents}></ShowContents> 
               )       
             }   
             
           </table>
         </article>
-        <AddContents saveContents={saveContents} dataSize={dataSize}></AddContents>
+        <AddContents saveContents={saveContents}></AddContents>
       </section>
     </body>
   );
