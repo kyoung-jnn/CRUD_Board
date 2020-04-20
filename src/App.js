@@ -34,7 +34,7 @@ function AddContents(props){
 
 function ShowContents(props){
   function handleDelete(){
-    console.log('delete contents:' + props.row.num);
+    console.log('delete contents num is:' + props.row.num);
     props.handleDelete(props.row.num);
   }
 
@@ -76,23 +76,31 @@ function Template(){
 
   function saveContents(data){
     setData({total:++Data.total,
-             boards:Data.boards.concat({...data,num:Data.total})
+             boards:Data.boards.concat({...data, num:Data.total})
             });
   }
 
   function delContents(delNum){
-    setData({total:--Data.total,
-      boards: Data.boards.filter(function(row){
-        return row.num !== delNum //화살표 함수 사용안함 중괄호 안에서는 return 해야함
+    setData({
+      total:--Data.total,
+      boards: Data.boards
+      .filter(function(row){
+        return row.num !== delNum // 화살표 함수 사용안함 중괄호 안에서는 return 해야함
+      })
+      .map(row => { // 번호 정리하기
+        if(row.num < delNum)
+          return row;
+        else{
+          --row.num;
+          return row;
+        }
       })
     })
+
   }
 
-  function arrangeContents(){
-    
-  }
   console.log('new data: ' + JSON.stringify(Data));
-  arrangeContents();
+
   return(
     <body>
       <section>
