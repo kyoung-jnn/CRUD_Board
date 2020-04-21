@@ -5,7 +5,8 @@ function AddContents(props){
   const [contents,setContents] = useState({
     num: '',
     title: '',
-    desc: ''
+    desc: '',
+    writer:'Jin'
   });
 
   function handleChange(e){
@@ -24,8 +25,8 @@ function AddContents(props){
   return(
     <div>
       <form onSubmit={handleSubmit}>
-        <input placeholder="title" name="title" onChange={handleChange}></input>
-        <input placeholder="desc" name="desc" onChange={handleChange}></input>
+        <input id="title" placeholder="title" name="title" autocomplete="off" onChange={handleChange}></input>
+        <input id="desc" placeholder="desc" name="desc" autocomplete="off" onChange={handleChange}></input>
         <input type="submit" value="ADD"></input>
       </form>
     </div>
@@ -61,7 +62,7 @@ function Template(){
         num:1,
         title:'Hello',
         desc:'HI',
-        writer:'Jin',
+        writer:'Kyo',
         date:new Date()
       },
       {
@@ -105,7 +106,14 @@ function Template(){
     <body>
       <section>
         <header>React Board</header>
-        <nav>menu</nav>
+        <nav>
+          <ul>
+            <li><a class='active' href='Home'>Home</a></li>
+            <li><a href='Profile'>Profile</a></li>
+            <li><a>Contents</a></li>
+            <li><a>About</a></li>
+          </ul>
+        </nav>
         <article>
           <table className='table'>
             <thead>
@@ -125,7 +133,9 @@ function Template(){
             
           </table>
         </article>
-        <AddContents saveContents={saveContents}></AddContents>
+        <footer>
+          <AddContents saveContents={saveContents}></AddContents>
+        </footer>
       </section>
     </body>
   );
