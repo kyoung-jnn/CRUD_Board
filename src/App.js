@@ -9,6 +9,9 @@ function App() {
       <Route exact path="/" component={Home}>
       </Route>
       <Route path="/Profile" component={Profile}></Route>
+      <Route path="/About" component={Profile}></Route>
+      <Route path="/About" component={Profile}></Route>
+
     </React.Fragment>
   );
 }
