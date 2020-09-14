@@ -22,6 +22,7 @@ header{
     text-align: center;
     border-bottom: 1px solid black;
     height: 10%;
+    font-size: 45px;
 }
 
 nav{
@@ -116,19 +117,19 @@ input[type=submit]:hover{
     text-align: center;
 }
 .Num{
-    width: 30px;
+    width: 10%;
 }
 .Title{
-    width: 300px;
+    width: 40%;
 }
 .Writer{
-    width: 70px;
+    width: 20%;
 }
 .Date{
-    width: 60px;
+    width: 20%;
 }
 .Del{
-    width: 10px;
+    width: 10%;
 }
 
 .delBtn{
