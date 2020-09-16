@@ -34,30 +34,45 @@ const initialState = {
 export default function board_reducer(state = initialState, action) {
   let boards = state.boards;
 
+  console.log(state);
+  console.log(action);
+
   switch (action.type) {
     case BOARD_SAVE: {
       let data = action.data;
       let total = state.total;
+
       // 새로운 삽입
       if (!data.brdno) {
         return {
           total: total + 1,
           boards: boards.concat({ ...data, brdnum: total, date: new Date() }),
           selectedBoard: {},
-        }}
-        return {...state, 
-            boards: boards.map(row => data.brdnum === row.brdnum ? {...data}:row),selectedBoard: {}}
+        };
+      }
+
+      return {
+        ...state,
+        boards: boards.map((row) =>
+          data.brdnum === row.brdnum ? { ...data } : row
+        ),
+        selectedBoard: {},
+      };
     }
     case BOARD_REMOVE:
-        // 삭제할 row 빼고 다시 배열로 만들기
-        return { ...state, boards: boards.filter(row=>row.brdnum !== action.brdnum),selectedBoard: {}};
-    case BOARD_READ:{
-        return {
-            ...state,
-            selectedBoard: boards.find(row => row.brdnum === action.brdnum)
-        }
-    }
+      // 삭제할 row 빼고 다시 배열로 만들기
+      return {
+        ...state,
+        boards: boards.filter((row) => row.brdnum !== action.brdnum),
+        selectedBoard: {},
+      };
+    case BOARD_READ:
+      return {
+        ...state,
+        selectedBoard: boards.find((row) => row.brdnum === action.brdnum),
+      };
+
     default:
-        return state;
+      return state;
   }
 }

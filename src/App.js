@@ -3,6 +3,7 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import  Home  from "./component/Home";
 import Profile from "./component/Profile"
+
 function App() {
   return (
     <React.Fragment>
