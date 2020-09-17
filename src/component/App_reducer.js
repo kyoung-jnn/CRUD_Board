@@ -34,8 +34,8 @@ const initialState = {
 export default function board_reducer(state = initialState, action) {
   let boards = state.boards;
 
-  console.log(state);
-  console.log(action);
+  console.log('state\n',state);
+  console.log('action\n',action);
 
   switch (action.type) {
     case BOARD_SAVE: {
@@ -63,7 +63,7 @@ export default function board_reducer(state = initialState, action) {
       // 삭제할 row 빼고 다시 배열로 만들기
       return {
         ...state,
-        boards: boards.filter((row) => row.brdnum !== action.brdnum),
+        boards: boards.filter(row => row.brdnum !== action.brdnum),
         selectedBoard: {},
       };
     case BOARD_READ:
@@ -71,7 +71,6 @@ export default function board_reducer(state = initialState, action) {
         ...state,
         selectedBoard: boards.find((row) => row.brdnum === action.brdnum),
       };
-
     default:
       return state;
   }

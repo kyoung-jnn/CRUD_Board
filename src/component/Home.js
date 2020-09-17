@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "../App.css";
 import { Link, Route } from "react-router-dom";
-import { createStore } from "redux";
-import { connect, Provider } from "react-redux";
+import { connect } from "react-redux";
 import  BoardItem  from './BoardItem';
 import  BoardInputForm  from './BoardInputForm';
 
 function Home(props) {
   const { boards } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
 
+  console.log('Home component의 props',props);
   return (
     <body>
       <section>
@@ -55,6 +55,8 @@ function Home(props) {
 
 // Reduecer의 state.boards를 boards로 받아주기
 function mapReduxStateToReactProps(state) {
+  console.log('mapReduxStateToReactProps',state);
   return { boards: state.boards };
 }
-export default connect(mapReduxStateToReactProps, null)(Home);
+
+export default connect(mapReduxStateToReactProps)(Home);

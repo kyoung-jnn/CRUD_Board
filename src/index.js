@@ -5,11 +5,12 @@ import {  BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import  store  from "./component/store.js";
+import Home from "./component/Home";
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <Home />
     </Provider>
   </BrowserRouter>,
   document.getElementById("root")

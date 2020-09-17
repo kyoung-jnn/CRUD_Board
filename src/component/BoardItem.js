@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { board_read, board_remove } from "./App_reducer";
 import { connect } from "react-redux";
 
 function BoardItem(props) {
   const handleUpdateForm = (props, brdnum) => {
-    console.log("Update 실행");
     props.dispatch(board_read(brdnum));
   };
 
   const row = props.row;
-
   return (
     <tbody>
       <tr>

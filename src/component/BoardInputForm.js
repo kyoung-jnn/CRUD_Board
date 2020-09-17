@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { board_save} from "./App_reducer";
 import { connect } from "react-redux";
 
@@ -15,18 +15,20 @@ function BoardInputForm(props) {
       setContents({
         ...contents,
         [e.target.name]: e.target.value,
-        date: new Date(),
       });
     }
   
     const handleSave = (props) => {
       props.dispatch(board_save(this.state));
-      props.saveContents(contents); //props로 전달된 함수 실행
+      setContents(contents);
     }
   
+    useEffect(()=> {
+      
+    },)
+
     return (
       <div>
-        <form onSubmit={handleSave}>
           <input
             id="title"
             placeholder="title"
@@ -41,8 +43,7 @@ function BoardInputForm(props) {
             autocomplete="off"
             onChange={handleChange}
           ></input>
-          <input type="submit" value="ADD"></input>
-        </form>
+          <button onClick={handleSave}>저장</button>
       </div>
     );
   }

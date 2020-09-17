@@ -7,12 +7,10 @@ import Profile from "./component/Profile"
 function App() {
   return (
     <React.Fragment>
-      <Route exact path="/" component={Home}>
-      </Route>
+      <Route exact path="/" component={Home}></Route>
       <Route path="/Profile" component={Profile}></Route>
       <Route path="/Contents" component={Profile}></Route>
       <Route path="/About" component={Profile}></Route>
-
     </React.Fragment>
   );
 }
