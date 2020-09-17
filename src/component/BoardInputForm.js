@@ -1,16 +1,20 @@
-import React, {useState,useEffect} from "react";
+import React, {useState} from "react";
 import { board_save} from "./App_reducer";
 import { connect } from "react-redux";
 
 function BoardInputForm(props) {
     const [contents, setContents] = useState({
+      title: "",
+      writer: "",
+    });
+
+    const initialSelectedBoard = {
       brdnum: "",
       title: "",
-      writer: "Jin",
-      desc: "",
+      writer: "",
       date: ""
-    });
-  
+    }
+
     const handleChange = (e) => {
       setContents({
         ...contents,
@@ -18,17 +22,15 @@ function BoardInputForm(props) {
       });
     }
   
-    const handleSave = (props) => {
-      props.dispatch(board_save(this.state));
-      setContents(contents);
+    const handleSave = () => {
+      props.dispatch(board_save(contents));
+      setContents(this.initialSelectedBoard)
     }
   
-    useEffect(()=> {
-      
-    },)
-
+    console.log(contents);
     return (
       <div>
+        <form onSubmit={handleSave}>
           <input
             id="title"
             placeholder="title"
@@ -37,15 +39,20 @@ function BoardInputForm(props) {
             onChange={handleChange}
           ></input>
           <input
-            id="desc"
-            placeholder="desc"
-            name="desc"
+            id="writer"
+            placeholder="writer"
+            name="writer"
             autocomplete="off"
             onChange={handleChange}
           ></input>
-          <button onClick={handleSave}>저장</button>
+          <input type="submit" value="ADD"></input>
+        </form>
       </div>
     );
   }
 
-  export default connect()(BoardInputForm)
+  function mapReduxStateToReactProps(state) {
+    return { selectedBoard: state.selectedBoard };
+  }
+
+  export default connect(mapReduxStateToReactProps)(BoardInputForm)
