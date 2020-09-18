@@ -1,142 +1,153 @@
-body{
-    background: #C9D6FF;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+body {
+  background: #c9d6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-section{
-    background-color: white;
-    width: 800px;
-    height: 500px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-box-shadow: 15px 18px 9px -3px rgba(0,0,0,0.57);
-    -moz-box-shadow: 15px 18px 9px -3px rgba(0,0,0,0.57);
-    box-shadow: 15px 18px 9px -3px rgba(0,0,0,0.57);
+section {
+  background-color: white;
+  width: 800px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+
+  -webkit-box-shadow: 15px 18px 9px -3px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 15px 18px 9px -3px rgba(0, 0, 0, 0.57);
+  box-shadow: 15px 18px 9px -3px rgba(0, 0, 0, 0.57);
 }
 
-header{
-    box-sizing: border-box;
-    text-align: center;
-    border-bottom: 1px solid black;
-    height: 10%;
-    font-size: 45px;
+header {
+  box-sizing: border-box;
+  text-align: center;
+  border-bottom: 1px solid black;
+  height: 10%;
+  font-size: 45px;
 }
 
-nav{
-    box-sizing: border-box;
-    float: left;
-    width: 100px;
-    height: 90%;
-    border-right: 1px solid black;
+nav {
+  box-sizing: border-box;
+  float: left;
+  width: 100px;
+  height: 90%;
+  border-right: 1px solid black;
 }
 
-article{
-    box-sizing: border-box;
-    float: right;
-    width: 700px;
-    height: 80%;
+article {
+  box-sizing: border-box;
+  float: right;
+  width: 700px;
+  height: 80%;
 }
 
-footer{
-    box-sizing: border-box;
-    margin-left: 32%;
-    height: 10%;
+footer {
+  box-sizing: border-box;
+  margin-left: 32%;
+  height: 10%;
 }
 
-ul{
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
 
-li a{
-    display: block;
-    padding: 15px;
-    height: 30px;
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
+li a {
+  display: block;
+  padding: 15px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
 }
 
-li a:visited{
-    color: black;
+li a:visited {
+  color: black;
 }
 
-li a.active{
-    background-color: #2f3542;
-    color: white;
+li a.active {
+  background-color: #2f3542;
+  color: white;
 }
 
-li a:hover:not(.active){
-    background-color: #57606f;
-    transition: background-color 0.8s ease-out;
-    color: white;
+li a:hover:not(.active) {
+  background-color: #57606f;
+  transition: background-color 0.8s ease-out;
+  color: white;
 }
 
-input#title,#desc{
-    height: 20px;
-    border-radius: 2px;
-    border: 1px solid black;
+input#title,
+#writer {
+  height: 20px;
+  border-radius: 2px;
+  border: 1px solid black;
 }
 
-input#title{
-    width: 100px;
-    margin-right: 10px;
+input#title {
+  width: 100px;
+  margin-right: 10px;
 }
 
-input#desc{
-    width: 200px;
-    margin-right: 10px;
+input#writer {
+  width: 200px;
+  margin-right: 10px;
 }
 
-input::placeholder{
-    color: #a4b0be;
-    font-style: italic;
-    padding: 5px;
+input::placeholder {
+  color: #a4b0be;
+  font-style: italic;
+  padding: 5px;
 }
 
-input[type=submit]{
-    width: 50px;
-    height: 25px;
-    background-color: white;
-    border-radius: 2px;
+input[type="submit"] {
+  width: 50px;
+  height: 25px;
+  background-color: white;
+  border-radius: 2px;
 }
 
-input[type=submit]:hover{
-    background-color: #57606f;
-    transition: background-color 0.5s ease-out;
-    color: white;
-    border: none;
+input[type="submit"]:hover {
+  background-color: #57606f;
+  transition: background-color 0.5s ease-out;
+  color: white;
+  border: none;
 }
 
-.table{
-    width: 100%;
-    text-align: center;
+.table {
+  width: 100%;
+  text-align: center;
 }
-.Num{
-    width: 10%;
+.Num {
+  width: 10%;
 }
-.Title{
-    width: 40%;
+.Title {
+  width: 40%;
 }
-.Writer{
-    width: 20%;
+.Writer {
+  width: 20%;
 }
-.Date{
-    width: 20%;
+.Date {
+  width: 20%;
 }
-.Del{
-    width: 10%;
-}
-
-.delBtn{
-    
+.Del {
+  width: 10%;
 }
 
-th, td{
-    border-bottom: 1px solid black;
-    padding: 10px;
+.delBtn {
+}
+
+th,
+td {
+  border-bottom: 1px solid black;
+  padding: 10px;
 }

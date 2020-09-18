@@ -4,8 +4,11 @@ const BOARD_READ = "ONE";
 const BOARD_LIST = "LIST";
 
 export const board_save = (data) => ({ type: BOARD_SAVE, data });
-export const board_remove = (brdno) => ({ type: BOARD_REMOVE, brdno: brdno });
-export const board_read = (brdno) => ({ type: BOARD_READ, brdno: brdno });
+export const board_remove = (brdnum) => ({
+  type: BOARD_REMOVE,
+  brdnum: brdnum,
+});
+export const board_read = (brdnum) => ({ type: BOARD_READ, brdnum: brdnum });
 export const board_list = () => ({ type: BOARD_LIST });
 
 const initialState = {
@@ -30,12 +33,12 @@ const initialState = {
 };
 
 // reducer
-// CRUD 처리
+// CRUD 처리를 reducer 메소드에서 모두 처리
 export default function board_reducer(state = initialState, action) {
   let boards = state.boards;
 
-  console.log('state\n',state);
-  console.log('action\n',action);
+  console.log("state\n", state);
+  console.log("action\n", action);
 
   switch (action.type) {
     case BOARD_SAVE: {
@@ -43,10 +46,10 @@ export default function board_reducer(state = initialState, action) {
       let total = state.total;
 
       // 새로운 삽입
-      if (!data.brdno) {
+      if (!data.brdnum) {
         return {
           total: total + 1,
-          boards: boards.concat({ ...data, brdnum: total, date: new Date() }),
+          boards: boards.concat({  brdnum: ++total,...data, date: new Date() }),
           selectedBoard: {},
         };
       }
@@ -59,13 +62,22 @@ export default function board_reducer(state = initialState, action) {
         selectedBoard: {},
       };
     }
-    case BOARD_REMOVE:
+    case BOARD_REMOVE: {
+      let total = state.total;
+      let initNum = 1;
       // 삭제할 row 빼고 다시 배열로 만들기
       return {
-        ...state,
-        boards: boards.filter(row => row.brdnum !== action.brdnum),
+        total: total - 1,
+        boards: boards
+          .filter((row) => row.brdnum !== action.brdnum)
+          .map((row) => {
+            row.brdnum = initNum++;
+            if (initNum === total) initNum = 1;
+            return row;
+          }),
         selectedBoard: {},
       };
+    }
     case BOARD_READ:
       return {
         ...state,

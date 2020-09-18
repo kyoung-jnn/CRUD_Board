@@ -1,21 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import  BoardItem  from './BoardItem';
-import  BoardInputForm  from './BoardInputForm';
+import BoardItem from "./BoardItem";
+import BoardInputForm from "./BoardInputForm";
+
+
+function selectCss() {
+  if (window.location.pathname == "/") {
+    return {
+    backgroundColor: '#57606f',
+    color: 'white'
+  };
+  }
+}
 
 function Home(props) {
   const { boards } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
+  const linkStyles = selectCss();
 
-  console.log('Home component의 props',props);
   return (
     <body>
       <section>
         <header>React Board</header>
         <nav>
           <ul>
-            <li>
+            <li
+              style={linkStyles}
+            >
               <Link to="Home">Home</Link>
             </li>
             <li>
@@ -55,7 +67,7 @@ function Home(props) {
 
 // Reduecer의 state.boards를 boards로 받아주기
 function mapReduxStateToReactProps(state) {
-  console.log('mapReduxStateToReactProps',state);
+  console.log("Home mapReduxStateToReactProps\n", state);
   return { boards: state.boards };
 }
 
