@@ -1,5 +1,5 @@
 import React from "react";
-import { board_read, board_remove } from "./App_reducer";
+import { board_read, board_remove } from "../redux/action";
 import { connect } from "react-redux";
 
 function BoardItem(props) {

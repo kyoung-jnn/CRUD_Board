@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import board_reducer from "./App_reducer";
+import board_reducer from "./reducer";
 
 // reducer
 export default createStore(
