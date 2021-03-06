@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { board_save } from "../redux/action";
+import { board_save } from "../../redux/action";
 import { connect } from "react-redux";
 
 function BoardInputForm(props) {

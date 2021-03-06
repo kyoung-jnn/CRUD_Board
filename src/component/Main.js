@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import "../App.css";
-import "../font.css";
 import { Link, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { Fragment } from "react";
 
-import Home from "./Home";
-import Board from "./Board";
-import Setting from "./Setting";
+import Home from "./menu/Home";
+import Board from "./menu/Board";
+import Setting from "./menu/Setting";
+
+import "../App.css";
+import "../font.css";
 
 function changeMenu(index, setCurPage) {
   setCurPage({ page: index });
@@ -15,7 +16,7 @@ function changeMenu(index, setCurPage) {
 
 function Main(props) {
   const [curPage, setCurPage] = useState({ page: "/" });
-  console.log(curPage);
+
   return (
     <Fragment>
       <TitleText>REACT BOARD 📰</TitleText>
@@ -72,15 +73,15 @@ function Main(props) {
 }
 
 const MainContainer = styled.body`
-  display: grid;
+  display: block;
+  position: absolute;
   width: 90%;
   height: 80%;
-  position: absolute;
   left: 50%;
   top: 50%;
-  border-radius: 20px;
   transform: translate(-50%, -50%);
   box-shadow: 20px 20px 60px #bababa, -20px -20px 60px #fcfcfc;
+  border-radius: 30px;
 `;
 
 const TitleText = styled.header`
@@ -92,7 +93,8 @@ const TitleText = styled.header`
 `;
 
 const NavMenu = styled.nav`
-  list-style: none;
+  width: 100%;
+  height: 10%;
   margin: 0px;
   padding: 0px;
 `;

@@ -1,11 +1,3 @@
-
-article {
-  box-sizing: border-box;
-  float: right;
-  width: 700px;
-  height: 80%;
-}
-
 footer {
   box-sizing: border-box;
   margin-left: 32%;
@@ -49,31 +41,4 @@ input[type="submit"]:hover {
   border: none;
 }
 
-.table {
-  width: 100%;
-  text-align: center;
-}
-.Num {
-  width: 10%;
-}
-.Title {
-  width: 40%;
-}
-.Writer {
-  width: 20%;
-}
-.Date {
-  width: 20%;
-}
-.Del {
-  width: 10%;
-}
 
-.delBtn {
-}
-
-th,
-td {
-  border-bottom: 1px solid black;
-  padding: 10px;
-}
