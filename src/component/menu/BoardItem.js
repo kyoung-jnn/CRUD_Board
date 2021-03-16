@@ -4,22 +4,23 @@ import { connect } from "react-redux";
 
 import styled from "styled-components";
 
-
 function BoardItem(props) {
   const handleUpdateForm = (brdnum) => {
     props.dispatch(board_read(brdnum));
   };
 
   const row = props.row;
-  
+
   return (
-    <tr> 
-      <td style={{border:0}}>{row.brdnum}</td>
-      <td style={{border:0}}>
+    <tr style={{ height: 40, cursor:'pointer'}}>
+      <td style={{ fontFamily: "NanumBarunGothic" }}>{row.brdnum}</td>
+      <td style={{ fontFamily: "NanumBarunGothic", fontWeight: "bold" }}>
         <a onClick={() => handleUpdateForm(row.brdnum)}>{row.title}</a>
       </td>
-      <td style={{border:0}}>{row.writer}</td>
-      <td style={{border:0}}>{row.date.toLocaleDateString("kr-KR")}</td>
+      <td style={{ fontFamily: "NanumBarunGothic" }}>{row.writer}</td>
+      <td style={{ fontFamily: "NanumBarunGothic" }}>
+        {row.date.toLocaleDateString("kr-KR")}
+      </td>
       {/* <td style={{border:0}}>
         <button
           className="delBtn"
@@ -33,6 +34,5 @@ function BoardItem(props) {
     </tr>
   );
 }
-
 
 export default connect()(BoardItem);

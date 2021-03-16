@@ -6,6 +6,7 @@ import { Fragment } from "react";
 import Home from "./menu/Home";
 import Board from "./menu/Board";
 import Setting from "./menu/Setting";
+import Write from "./menu/BoardWrite";
 
 import "../App.css";
 import "../font.css";
@@ -60,12 +61,13 @@ function Main(props) {
           </ul>
         </NavMenu>
         <Switch>
-          <Route exact path="/" render={(props) => <Home></Home>}></Route>
-          <Route path="/Board" render={(props) => <Board></Board>}></Route>
+          <Route exact path="/" render={() => <Home></Home>}></Route>
+          <Route path="/Board" render={() => <Board></Board>}></Route>
           <Route
             path="/Setting"
-            render={(props) => <Setting></Setting>}
+            render={() => <Setting></Setting>}
           ></Route>
+          <Route path="/Write" render={() => <Write></Write>}></Route>
         </Switch>
       </MainContainer>
     </Fragment>
@@ -75,7 +77,7 @@ function Main(props) {
 const MainContainer = styled.body`
   display: block;
   position: absolute;
-  width: 90%;
+  width: 60%;
   height: 80%;
   left: 50%;
   top: 50%;
@@ -95,8 +97,6 @@ const TitleText = styled.header`
 const NavMenu = styled.nav`
   width: 100%;
   height: 10%;
-  margin: 0px;
-  padding: 0px;
 `;
 
 const NavList = styled.li`
@@ -120,4 +120,5 @@ const NavLink = styled(Link)`
 const NavGithub = styled(NavLink.withComponent("a"))`
   color: #b2bec3;
 `;
+
 export default Main;

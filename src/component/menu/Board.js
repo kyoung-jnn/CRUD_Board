@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import BoardItem from "./BoardItem";
 import BoardInputForm from "./BoardInputForm";
@@ -12,25 +13,38 @@ function Home(props) {
     <Fragment>
       <BoardContainer>
         <Table>
-          <tr>
+          <tr style={{ height: 60 }}>
             <TableNum>번호</TableNum>
             <TableTitle>제목</TableTitle>
             <TableWriter>작성자</TableWriter>
             <TableDate>날짜</TableDate>
           </tr>
+
           {boards.map((row) => (
             <BoardItem key={row.brdnum} row={row}></BoardItem>
           ))}
         </Table>
       </BoardContainer>
+      <BottomContainer>
+        <button>
+          <Link to="/Write">글쓰기</Link>
+        </button>
+        <div>1,2,3</div>
+      </BottomContainer>
     </Fragment>
   );
 }
 
-const BoardContainer = styled.article`
+const BoardContainer = styled.body`
   height: 80%;
   width: 100%;
-  display: block;
+  margin: 0;
+`;
+
+const BottomContainer = styled.footer`
+  height: 20%;
+  width: 100%;
+  margin: 0;
 `;
 
 const Table = styled.table`
@@ -40,7 +54,6 @@ const Table = styled.table`
 
 const TableNum = styled.th`
   width: 10%;
-  border: 0;
   font-size: 20px;
   font-weight: bold;
   font-family: "NanumBarunGothic", sans-serif;
@@ -48,7 +61,6 @@ const TableNum = styled.th`
 
 const TableTitle = styled.th`
   width: 40%;
-  border: 0;
   font-size: 20px;
   font-weight: bold;
   font-family: "NanumBarunGothic", sans-serif;
@@ -56,7 +68,6 @@ const TableTitle = styled.th`
 
 const TableWriter = styled.th`
   width: 20%;
-  border: 0;
   font-size: 20px;
   font-weight: bold;
   font-family: "NanumBarunGothic", sans-serif;
@@ -64,7 +75,6 @@ const TableWriter = styled.th`
 
 const TableDate = styled.th`
   width: 20%;
-  border: 0;
   font-size: 20px;
   font-weight: bold;
   font-family: "NanumBarunGothic", sans-serif;
