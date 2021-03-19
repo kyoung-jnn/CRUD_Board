@@ -4,9 +4,11 @@
 
 ## 프로젝트 소개 🔎
 
-Redux와 styled-components 를 익숙해지기 위한 토이 프로젝트입니다.
-CRUD 게시판입니다.
-게시글 작성시 위즈윅은 react-quill을 사용했습니다.
+**Redux** 와 **styled-components**를 실제 프로젝트에 사용해보기 위한 토이 프로젝트입니다.
+
+CRUD가 가능한 게시판입니다.
+
+게시글 작성시 위즈윅은 **react-quill**을 사용했습니다.
 
 ### 설치
 
