@@ -22,7 +22,7 @@ npm start
 
 ![JavaScript badge](http://img.shields.io/badge/JavaScript-ES6-yellow?logoColor=white&labelColor=yellow&style=flat-square&logo=JavaScript)
 
-![react badge](http://img.shields.io/badge/React-v16.13.0-blue?labelColor=blue&style=flat-square&logo=react)
+![react badge](http://img.shields.io/badge/React-v16.13.0-blue?logoColor=white&labelColor=blue&style=flat-square&logo=react)
 
 ![styled-components badge](http://img.shields.io/badge/ReactRouter-v5.1.2-218c74?logoColor=white&labelColor=218c74&style=flat-square&logo=react-router)
 
