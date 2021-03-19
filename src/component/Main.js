@@ -63,10 +63,7 @@ function Main(props) {
         <Switch>
           <Route exact path="/" render={() => <Home></Home>}></Route>
           <Route path="/Board" render={() => <Board></Board>}></Route>
-          <Route
-            path="/Setting"
-            render={() => <Setting></Setting>}
-          ></Route>
+          <Route path="/Setting" render={() => <Setting></Setting>}></Route>
           <Route path="/Write" render={() => <Write></Write>}></Route>
         </Switch>
       </MainContainer>
@@ -75,15 +72,18 @@ function Main(props) {
 }
 
 const MainContainer = styled.body`
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   width: 60%;
   height: 80%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+
+  margin: 0;
   box-shadow: 20px 20px 60px #bababa, -20px -20px 60px #fcfcfc;
-  border-radius: 30px;
+  border-radius: 0px;
 `;
 
 const TitleText = styled.header`
