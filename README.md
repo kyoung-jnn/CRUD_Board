@@ -18,12 +18,13 @@ npm start
 
 ## 프로젝트 기술 Stack ⚙️
 
-### Front-End https://github.com/ValuableCodeMakers/KwangWoonUniv_MileageService
+![JavaScript badge](http://img.shields.io/badge/JavaScript-ES6-yellow?logoColor=white&labelColor=yellow&style=flat-square&logo=JavaScript)
 
-![JavaScript badge](http://img.shields.io/badge/JavaScript-yellow?style=flat-square&logo=JavaScript)
-![react badge](http://img.shields.io/badge/react-v16.13.0-blue?style=flat-square&logo=react)
-![styled-components badge](http://img.shields.io/badge/styled-components-blue?style=flat-square&logo=React)
-![styled-components badge](http://img.shields.io/badge/styled-components-blue?style=flat-square&logo=styled-components)
+![react badge](http://img.shields.io/badge/React-v16.13.0-blue?labelColor=blue&style=flat-square&logo=react)
+
+![styled-components badge](http://img.shields.io/badge/ReactRouter-v5.1.2-218c74?logoColor=white&labelColor=218c74&style=flat-square&logo=react-router)
+
+![styled-components badge](http://img.shields.io/badge/StyledComponents-v5.1.2-CA4245?logoColor=white&labelColor=CA4245&style=flat-square&logo=styled-components)
 
 ---
 
