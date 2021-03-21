@@ -61,10 +61,10 @@ function Main(props) {
           </ul>
         </NavMenu>
         <Switch>
-          <Route exact path="/" render={() => <Home></Home>}></Route>
           <Route path="/Board" render={() => <Board></Board>}></Route>
           <Route path="/Setting" render={() => <Setting></Setting>}></Route>
-          <Route path="/Write" render={() => <Write></Write>}></Route>
+          <Route path="/Write" render={(props) => <Write props={props}></Write>}></Route>
+          <Route exact path="/" render={() => <Home></Home>}></Route>
         </Switch>
       </MainContainer>
     </Fragment>

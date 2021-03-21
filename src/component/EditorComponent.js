@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import React, { Component } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 class EditorComponent extends Component {
   constructor(props) {
@@ -45,20 +45,18 @@ class EditorComponent extends Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <div style={{ height: "100%" }}>
-        <ReactQuill
-          style={{ height: "100%" }}
-          theme="snow"
-          modules={this.modules}
-          formats={this.formats}
-          value={value || ""}
-          onChange={(content, delta, source, editor) =>
-            onChange(editor.getHTML())
-          }
-        />
-      </div>
+      <ReactQuill
+        style={{ width: "100%", height: "75%" }}
+        theme="snow"
+        modules={this.modules}
+        formats={this.formats}
+        value={value || ""}
+        onChange={(content, delta, source, editor) =>
+          onChange(editor.getHTML())
+        }
+      />
     );
   }
 }
 
-export default EditorComponent
+export default EditorComponent;

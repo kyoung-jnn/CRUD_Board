@@ -16,6 +16,7 @@
     "redux-devtools": "^3.7.0",
     "styled-components": "^5.2.1"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
