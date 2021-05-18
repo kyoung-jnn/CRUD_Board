@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 function Home() {
   return (
-    <Main>
+    <MainContainer>
       <ExplainContainer>
         <body
           style={{
@@ -60,11 +60,11 @@ function Home() {
           </p>
         </body>
       </StackContainer>
-    </Main>
+    </MainContainer>
   );
 }
 
-const Main = styled.article`
+const MainContainer = styled.article`
   width: 100%;
   height: 80%;
 `;

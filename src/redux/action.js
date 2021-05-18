@@ -1,6 +1,6 @@
 const BOARD_SAVE = "SAVE";
 const BOARD_REMOVE = "REMOVE";
-const BOARD_READ = "ONE";
+const BOARD_READ = "READ";
 const BOARD_LIST = "LIST";
 
 export const board_save = (data) => ({ type: BOARD_SAVE, data });

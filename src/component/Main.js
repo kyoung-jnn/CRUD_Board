@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Link, Switch, Route } from "react-router-dom";
+
 import styled from "styled-components";
-import { Fragment } from "react";
 
 import Home from "./menu/Home";
-import Board from "./menu/Board";
+import Board from "./menu/Board/Board";
 import Setting from "./menu/Setting";
-import Write from "./menu/BoardWrite";
+import Write from "./menu/Board/BoardWrite";
 
-import "../App.css";
 import "../font.css";
 
 function changeMenu(index, setCurPage) {
   setCurPage({ page: index });
 }
 
-function Main(props) {
+function Main() {
   const [curPage, setCurPage] = useState({ page: "/" });
-
   return (
     <Fragment>
       <TitleText>REACT BOARD 📰</TitleText>
@@ -26,18 +24,13 @@ function Main(props) {
         <NavMenu>
           <ul>
             <NavList>
-              <NavLink
-                to="/"
-                curPage={curPage.page}
-                onClick={() => changeMenu("/", setCurPage)}
-              >
+              <NavLink to="/" onClick={() => changeMenu("/", setCurPage)}>
                 홈
               </NavLink>
             </NavList>
             <NavList>
               <NavLink
                 to="Board"
-                curPage={curPage.page}
                 onClick={() => changeMenu("Board", setCurPage)}
               >
                 자유게시판
@@ -52,7 +45,6 @@ function Main(props) {
             <NavList>
               <NavLink
                 to="Setting"
-                curPage={curPage.page}
                 onClick={() => changeMenu("Setting", setCurPage)}
               >
                 설정
@@ -61,17 +53,23 @@ function Main(props) {
           </ul>
         </NavMenu>
         <Switch>
-          <Route path="/Board" render={() => <Board></Board>}></Route>
-          <Route path="/Setting" render={() => <Setting></Setting>}></Route>
-          <Route path="/Write" render={(props) => <Write props={props}></Write>}></Route>
           <Route exact path="/" render={() => <Home></Home>}></Route>
+          <Route
+            path="/Board"
+            render={(props) => <Board props={props}></Board>}
+          ></Route>
+          <Route path="/Setting" render={() => <Setting></Setting>}></Route>
+          <Route
+            path="/Write"
+            render={(props) => <Write props={props}></Write>}
+          ></Route>
         </Switch>
       </MainContainer>
     </Fragment>
   );
 }
 
-const MainContainer = styled.body`
+const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -80,7 +78,6 @@ const MainContainer = styled.body`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
   margin: 0;
   box-shadow: 20px 20px 60px #bababa, -20px -20px 60px #fcfcfc;
   border-radius: 0px;

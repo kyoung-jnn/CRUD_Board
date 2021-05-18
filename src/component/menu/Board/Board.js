@@ -2,49 +2,71 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import BoardItem from "./BoardItem";
-import BoardInputForm from "./BoardInputForm";
 
 import styled from "styled-components";
 
-function Home(props) {
+function Board(props) {
   const { boards } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
 
   return (
-    <Fragment>
+    <MainContainer>
       <BoardContainer>
         <Table>
-          <tr style={{ height: 60 }}>
-            <TableNum>번호</TableNum>
-            <TableTitle>제목</TableTitle>
-            <TableWriter>작성자</TableWriter>
-            <TableDate>날짜</TableDate>
-          </tr>
-
+          <thead>
+            <tr style={{ height: 60 }}>
+              <TableNum>번호</TableNum>
+              <TableTitle>제목</TableTitle>
+              <TableWriter>작성자</TableWriter>
+              <TableDate>날짜</TableDate>
+            </tr>
+          </thead>
           {boards.map((row) => (
-            <BoardItem key={row.brdnum} row={row}></BoardItem>
+            <BoardItem props={props} key={row.brdnum} row={row}></BoardItem>
           ))}
         </Table>
       </BoardContainer>
       <BottomContainer>
-        <button>
-          <Link to="/Write">글쓰기</Link>
-        </button>
-        <div>1,2,3</div>
+        <SaveButton to="Write">글쓰기</SaveButton>
       </BottomContainer>
-    </Fragment>
+    </MainContainer>
   );
 }
 
-const BoardContainer = styled.body`
-  height: 80%;
+const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 90%;
+`;
+
+const BoardContainer = styled.div`
+  height: 90%;
+  width: 90%;
   margin: 0;
 `;
 
-const BottomContainer = styled.footer`
-  height: 20%;
-  width: 100%;
-  margin: 0;
+const BottomContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 10%;
+  width: 90%;
+  border-top: 1px solid #bdc3c7;
+`;
+
+const SaveButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 60%;
+  border-radius: 5px;
+  border: 0;
+  text-decoration: none;
+  background-color: #0984e3;
+  color: #fff;
+  font-weight: bold;
 `;
 
 const Table = styled.table`
@@ -86,4 +108,4 @@ function mapReduxStateToReactProps(state) {
   return { boards: state.boards };
 }
 
-export default connect(mapReduxStateToReactProps)(Home);
+export default connect(mapReduxStateToReactProps)(Board);

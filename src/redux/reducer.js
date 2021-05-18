@@ -10,14 +10,14 @@ const initialState = {
       brdnum: 1,
       writer: "Kyo",
       title: "Hello",
-      desc: "HI",
+      desc: "안녕하세요~",
       date: new Date(),
     },
     {
       brdnum: 2,
       writer: "Roh",
       title: "Good bye",
-      desc: "GG",
+      desc: "😁",
       date: new Date(),
     },
   ],
@@ -41,7 +41,7 @@ export default function board_reducer(state = initialState, action) {
       if (!data.brdnum) {
         return {
           total: total + 1,
-          boards: boards.concat({  brdnum: ++total,...data, date: new Date() }),
+          boards: boards.concat({ brdnum: ++total, ...data, date: new Date() }),
           selectedBoard: {},
         };
       }
