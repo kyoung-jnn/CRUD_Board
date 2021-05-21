@@ -5,14 +5,15 @@ import styled from "styled-components";
 
 import Home from "./menu/Home";
 import Board from "./menu/Board/Board";
+import BoardDetail from "./menu/Board/BoardDetail";
 import Setting from "./menu/Setting";
 import Write from "./menu/Board/BoardWrite";
 
 import "../font.css";
 
-function changeMenu(index, setCurPage) {
+const handleChangeMenu = (index, setCurPage) => {
   setCurPage({ page: index });
-}
+};
 
 function Main() {
   const [curPage, setCurPage] = useState({ page: "/" });
@@ -24,14 +25,19 @@ function Main() {
         <NavMenu>
           <ul>
             <NavList>
-              <NavLink to="/" onClick={() => changeMenu("/", setCurPage)}>
+              <NavLink
+                curpage={curPage.page}
+                to="/"
+                onClick={() => handleChangeMenu("/", setCurPage)}
+              >
                 홈
               </NavLink>
             </NavList>
             <NavList>
               <NavLink
+                curpage={curPage.page}
                 to="Board"
-                onClick={() => changeMenu("Board", setCurPage)}
+                onClick={() => handleChangeMenu("Board", setCurPage)}
               >
                 자유게시판
               </NavLink>
@@ -44,16 +50,19 @@ function Main() {
 
             <NavList>
               <NavLink
+                curpage={curPage.page}
                 to="Setting"
-                onClick={() => changeMenu("Setting", setCurPage)}
+                onClick={() => handleChangeMenu("Setting", setCurPage)}
               >
                 설정
               </NavLink>
             </NavList>
           </ul>
         </NavMenu>
+
         <Switch>
           <Route exact path="/" render={() => <Home></Home>}></Route>
+          <Route path="/Board/:title" component={BoardDetail}></Route>
           <Route
             path="/Board"
             render={(props) => <Board props={props}></Board>}
@@ -107,7 +116,7 @@ const NavList = styled.li`
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${(props) => (props.to == props.curPage ? "#000" : "#b2bec3")};
+  color: ${(props) => (props.to == props.curpage ? "#000" : "#b2bec3")};
   &:hover {
     color: #2d3436;
     transition: color ease-in 0.3s;

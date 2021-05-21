@@ -1,13 +1,11 @@
 import React from "react";
-import { board_read, board_remove } from "../../../redux/action";
+import { board_read } from "../../../redux/action";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import styled from "styled-components";
-
-function BoardItem({ props, row, dispatch }) {
-  const handleDetailForm = (brdnum) => {
+function BoardItem({ row, dispatch }) {
+  const handleDetail = (brdnum) => {
     dispatch(board_read(brdnum));
-    props.history.push("/BoardDetail");
   };
 
   return (
@@ -15,7 +13,13 @@ function BoardItem({ props, row, dispatch }) {
       <tr style={{ height: 40, cursor: "pointer" }}>
         <td style={{ fontFamily: "NanumBarunGothic" }}>{row.brdnum}</td>
         <td style={{ fontFamily: "NanumBarunGothic", fontWeight: "bold" }}>
-          <a onClick={() => handleDetailForm(row.brdnum)}>{row.title}</a>
+          <Link
+            to={`/Board/${row.brdnum}`}
+            style={{ color: "#111", textDecoration: "none" }}
+            onClick={() => handleDetail(row.brdnum)}
+          >
+            {row.title}
+          </Link>
         </td>
         <td style={{ fontFamily: "NanumBarunGothic" }}>{row.writer}</td>
         <td style={{ fontFamily: "NanumBarunGothic" }}>

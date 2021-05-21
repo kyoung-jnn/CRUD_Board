@@ -6,34 +6,34 @@ function Home() {
   return (
     <MainContainer>
       <ExplainContainer>
-        <body
+        <article
           style={{
             fontSize: 30,
             fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
           토이 프로젝트 🎉
-        </body>
-        <body
+        </article>
+        <article
           style={{
             fontSize: 20,
             fontFamily: "NanumBarunGothic",
           }}
         >
           react를 이용한 게시판입니다. 😊 
-        </body>
+        </article>
       </ExplainContainer>
 
       <StackContainer>
-        <body
+        <article
           style={{
             fontSize: 30,
             fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
           기술 스택 🔧
-        </body>
-        <body>
+        </article>
+        <article>
           <p
             style={{
               fontSize: 18,
@@ -58,13 +58,13 @@ function Home() {
           >
             styled-component
           </p>
-        </body>
+        </article>
       </StackContainer>
     </MainContainer>
   );
 }
 
-const MainContainer = styled.article`
+const MainContainer = styled.main`
   width: 100%;
   height: 80%;
 `;

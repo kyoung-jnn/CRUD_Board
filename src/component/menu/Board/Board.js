@@ -21,7 +21,7 @@ function Board(props) {
             </tr>
           </thead>
           {boards.map((row) => (
-            <BoardItem props={props} key={row.brdnum} row={row}></BoardItem>
+            <BoardItem key={row.brdnum} row={row}></BoardItem>
           ))}
         </Table>
       </BoardContainer>
@@ -44,7 +44,6 @@ const MainContainer = styled.main`
 const BoardContainer = styled.div`
   height: 90%;
   width: 90%;
-  margin: 0;
 `;
 
 const BottomContainer = styled.div`
@@ -104,7 +103,6 @@ const TableDate = styled.th`
 
 // Reduecer의 state.boards를 boards로 받아주기
 function mapReduxStateToReactProps(state) {
-  console.log("Home mapReduxStateToReactProps\n", state);
   return { boards: state.boards };
 }
 
