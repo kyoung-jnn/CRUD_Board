@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/kyoung-jnn/CRUD_Board/static/css/main.be0b2c1a.chunk.css",
-    "main.js": "/kyoung-jnn/CRUD_Board/static/js/main.4437b805.chunk.js",
-    "main.js.map": "/kyoung-jnn/CRUD_Board/static/js/main.4437b805.chunk.js.map",
-    "runtime-main.js": "/kyoung-jnn/CRUD_Board/static/js/runtime-main.defc5097.js",
-    "runtime-main.js.map": "/kyoung-jnn/CRUD_Board/static/js/runtime-main.defc5097.js.map",
-    "static/css/2.3c515868.chunk.css": "/kyoung-jnn/CRUD_Board/static/css/2.3c515868.chunk.css",
-    "static/js/2.33433111.chunk.js": "/kyoung-jnn/CRUD_Board/static/js/2.33433111.chunk.js",
-    "static/js/2.33433111.chunk.js.map": "/kyoung-jnn/CRUD_Board/static/js/2.33433111.chunk.js.map",
-    "index.html": "/kyoung-jnn/CRUD_Board/index.html",
-    "precache-manifest.7f105be31e29568973cb030f02496bc2.js": "/kyoung-jnn/CRUD_Board/precache-manifest.7f105be31e29568973cb030f02496bc2.js",
-    "service-worker.js": "/kyoung-jnn/CRUD_Board/service-worker.js",
-    "static/css/2.3c515868.chunk.css.map": "/kyoung-jnn/CRUD_Board/static/css/2.3c515868.chunk.css.map",
-    "static/css/main.be0b2c1a.chunk.css.map": "/kyoung-jnn/CRUD_Board/static/css/main.be0b2c1a.chunk.css.map",
-    "static/js/2.33433111.chunk.js.LICENSE.txt": "/kyoung-jnn/CRUD_Board/static/js/2.33433111.chunk.js.LICENSE.txt"
+    "main.css": "/CRUD_Board/static/css/main.be0b2c1a.chunk.css",
+    "main.js": "/CRUD_Board/static/js/main.f72b8c48.chunk.js",
+    "main.js.map": "/CRUD_Board/static/js/main.f72b8c48.chunk.js.map",
+    "runtime-main.js": "/CRUD_Board/static/js/runtime-main.0aab12a4.js",
+    "runtime-main.js.map": "/CRUD_Board/static/js/runtime-main.0aab12a4.js.map",
+    "static/css/2.3c515868.chunk.css": "/CRUD_Board/static/css/2.3c515868.chunk.css",
+    "static/js/2.9843e526.chunk.js": "/CRUD_Board/static/js/2.9843e526.chunk.js",
+    "static/js/2.9843e526.chunk.js.map": "/CRUD_Board/static/js/2.9843e526.chunk.js.map",
+    "index.html": "/CRUD_Board/index.html",
+    "precache-manifest.5c9da0944394ad349d2f0f0af75e7695.js": "/CRUD_Board/precache-manifest.5c9da0944394ad349d2f0f0af75e7695.js",
+    "service-worker.js": "/CRUD_Board/service-worker.js",
+    "static/css/2.3c515868.chunk.css.map": "/CRUD_Board/static/css/2.3c515868.chunk.css.map",
+    "static/css/main.be0b2c1a.chunk.css.map": "/CRUD_Board/static/css/main.be0b2c1a.chunk.css.map",
+    "static/js/2.9843e526.chunk.js.LICENSE.txt": "/CRUD_Board/static/js/2.9843e526.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.defc5097.js",
+    "static/js/runtime-main.0aab12a4.js",
     "static/css/2.3c515868.chunk.css",
-    "static/js/2.33433111.chunk.js",
+    "static/js/2.9843e526.chunk.js",
     "static/css/main.be0b2c1a.chunk.css",
-    "static/js/main.4437b805.chunk.js"
+    "static/js/main.f72b8c48.chunk.js"
   ]
 }
