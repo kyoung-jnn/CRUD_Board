@@ -2,17 +2,19 @@ import React from "react";
 
 import styled from "styled-components";
 
+import { MainContainer, SubContainer } from "../modules/Container";
+
 function Home() {
   return (
-    <MainContainer>
-      <ExplainContainer>
+    <HomeContainer>
+      <SubContainer>
         <article
           style={{
             fontSize: 30,
             fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
-          토이 프로젝트 🎉
+          토이 프로젝트 <span role="img">🎉</span>
         </article>
         <article
           style={{
@@ -20,18 +22,18 @@ function Home() {
             fontFamily: "NanumBarunGothic",
           }}
         >
-          react를 이용한 게시판입니다. 😊 
+          react를 이용한 게시판입니다. <span role="img">😊</span>
         </article>
-      </ExplainContainer>
+      </SubContainer>
 
-      <StackContainer>
+      <SubContainer>
         <article
           style={{
             fontSize: 30,
             fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
-          기술 스택 🔧
+          기술 스택 <span role="img">🔧</span>
         </article>
         <article>
           <p
@@ -59,32 +61,13 @@ function Home() {
             styled-component
           </p>
         </article>
-      </StackContainer>
-    </MainContainer>
+      </SubContainer>
+    </HomeContainer>
   );
 }
 
-const MainContainer = styled.main`
-  width: 100%;
-  height: 80%;
-`;
-
-const ExplainContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height: 50%;
-  margin-left: 10%;
-`;
-
-const StackContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height: 50%;
-  margin-left: 10%;
+const HomeContainer = styled(MainContainer)`
+  align-items: flex-start;
 `;
 
 export default Home;

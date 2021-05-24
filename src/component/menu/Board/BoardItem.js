@@ -25,16 +25,6 @@ function BoardItem({ row, dispatch }) {
         <td style={{ fontFamily: "NanumBarunGothic" }}>
           {row.date.toLocaleDateString("kr-KR")}
         </td>
-        {/* <td style={{border:0}}>
-        <button
-          className="delBtn"
-          onClick={() => {
-            props.dispatch(board_remove(row.brdnum));
-          }}
-        >
-          X
-        </button>
-      </td> */}
       </tr>
     </thead>
   );

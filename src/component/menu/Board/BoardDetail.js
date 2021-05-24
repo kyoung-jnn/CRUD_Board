@@ -1,28 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { board_remove } from "../../../redux/action";
-import { DefaultButton } from "../../modules/Button";
+import { board_delete } from "../../../redux/action";
+
 import styled from "styled-components";
+import { DefaultButton } from "../../modules/Button";
+import { MainContainer, BottomContainer } from "../../modules/Container";
 
-const handleRemove = (brdnum) => {
-  board_remove(brdnum);
+const handleRemove = (history, dispatch, brdnum) => {
+  dispatch(board_delete(brdnum));
+  history.push("/Board");
 };
+
 function BoardDetail(props) {
-  const { selectedBoard } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
+  const { history, dispatch, selectedBoard } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
 
   return (
     <MainContainer>
-      <BoardContainer>
+      <SubContainer>
         <Title>
           <div>{selectedBoard.title}</div>
         </Title>
         <Writer>{selectedBoard.writer}</Writer>
-        <Desc>{selectedBoard.desc}</Desc>
-      </BoardContainer>
+        <Desc dangerouslySetInnerHTML={{ __html: selectedBoard.desc }}></Desc>
+      </SubContainer>
       <BottomContainer>
-        <EditButton to="Write">수정하기</EditButton>
-        <DeleteButton onClick={() => handleRemove(selectedBoard.brdnum)}>
+        <EditButton to="/Write">수정하기</EditButton>
+        <DeleteButton
+          onClick={() => handleRemove(history, dispatch, selectedBoard.brdnum)}
+        >
           삭제하기
         </DeleteButton>
       </BottomContainer>
@@ -30,48 +37,35 @@ function BoardDetail(props) {
   );
 }
 
-const MainContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 90%;
-`;
-
-const BoardContainer = styled.div`
+const SubContainer = styled.section`
   height: 90%;
   width: 90%;
 `;
 
-const BottomContainer = styled.footer`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+const Title = styled.article`
   height: 10%;
-  width: 90%;
-  border-top: 1px solid #bdc3c7;
-`;
-
-const Title = styled.div`
   display: flex;
   align-items: center;
   height: 60px;
   font-size: 30px;
   font-family: "KOTRA_BOLD-Bold", sans-serif;
 `;
-const Writer = styled.div`
+const Writer = styled.article`
+  height: 5%;
   border-bottom: 1px solid #bdc3c7;
+  padding-bottom: 3%;
   font-size: 20px;
   font-family: "KOTRA_BOLD-Bold", sans-serif;
 `;
-const Desc = styled.article`
-  height: "100%";
-  margin-top: "5%";
+const Desc = styled.div`
+  height: 76%;
+  padding: 3%;
+  font-size: 1.2em;
   font-family: "NanumBarunGothic", sans-serif;
 `;
 
-const EditButton = styled(DefaultButton)`
+const EditButton = styled(DefaultButton.withComponent(Link))`
+  text-decoration: none;
   background-color: #0984e3;
 `;
 
@@ -81,8 +75,7 @@ const DeleteButton = styled(DefaultButton)`
 
 // Reduecer의 state.boards를 boards로 받아주기
 function mapReduxStateToReactProps(state) {
-  console.log("BoardDetail mapReduxStateToReactProps\n", state);
-  return { selectedBoard: state.selectedBoard };
+  return { selectedBoard: state.board_reducer.selectedBoard };
 }
 
 export default connect(mapReduxStateToReactProps)(BoardDetail);

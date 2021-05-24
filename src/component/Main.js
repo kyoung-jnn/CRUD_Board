@@ -88,7 +88,7 @@ const MainContainer = styled.main`
   top: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
-  box-shadow: 20px 20px 60px #bababa, -20px -20px 60px #fcfcfc;
+  box-shadow: 10px 10px 60px #bababa, -10px -10px 60px #fcfcfc;
   border-radius: 0px;
 `;
 
@@ -116,7 +116,7 @@ const NavList = styled.li`
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${(props) => (props.to == props.curpage ? "#000" : "#b2bec3")};
+  color: ${(props) => (props.to === props.curpage ? "#000" : "#b2bec3")};
   &:hover {
     color: #2d3436;
     transition: color ease-in 0.3s;

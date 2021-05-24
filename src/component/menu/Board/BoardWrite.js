@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
 import EditorComponent from "./EditorComponent.js";
 
-import { board_save } from "../../../redux/action";
 import styled from "styled-components";
+import { DefaultButton } from "../../modules/Button";
 
-function BoardWrite({ props, dispatch }) {
+import { board_create } from "../../../redux/action";
+
+function BoardWrite({ props, dispatch, selectedBoard, userName }) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const updateState = Object.keys(selectedBoard).length === 0 ? false : true;
 
   const onTitleChange = (e) => {
     setTitle(e.target.value);
   };
+
   const onEditorChange = (value) => {
     setDesc(value);
   };
 
   const handleSave = (e) => {
     e.preventDefault();
+
     const saveData = {
+      brdnum: updateState ? selectedBoard.brdnum : -1,
       title: title,
-      writer: "Jin",
+      writer: userName,
       desc: desc,
-      date: "",
+      date: new Date(),
     };
 
-    dispatch(board_save(saveData));
+    dispatch(board_create(saveData));
 
     props.history.push("/Board");
   };
@@ -39,6 +46,13 @@ function BoardWrite({ props, dispatch }) {
       unBlock();
     };
   }, [props.history]);
+
+  useEffect(() => {
+    if (updateState) {
+      setTitle(selectedBoard.title);
+      setDesc(title.desc);
+    }
+  }, []);
 
   return (
     <MainContainer>
@@ -90,18 +104,17 @@ const BottomContainer = styled.div`
   border-top: 1px solid #bdc3c7;
 `;
 
-const SaveButton = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 60%;
-  border-radius: 5px;
-  border: 0;
+const SaveButton = styled(DefaultButton.withComponent(Link))`
   text-decoration: none;
   background-color: #0984e3;
-  color: #fff;
-  font-weight: bold;
 `;
 
-export default connect()(BoardWrite);
+// Reduecer의 state.boards를 boards로 받아주기
+function mapReduxStateToReactProps(state) {
+  return {
+    selectedBoard: state.board_reducer.selectedBoard,
+    userName: state.userState_ruducer.name,
+  };
+}
+
+export default connect(mapReduxStateToReactProps)(BoardWrite);

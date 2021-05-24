@@ -1,16 +1,18 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import BoardItem from "./BoardItem";
 
 import styled from "styled-components";
+import { DefaultButton } from "../../modules/Button";
+import { MainContainer, BottomContainer } from "../../modules/Container";
 
 function Board(props) {
   const { boards } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
 
   return (
     <MainContainer>
-      <BoardContainer>
+      <SubContainer>
         <Table>
           <thead>
             <tr style={{ height: 60 }}>
@@ -24,7 +26,7 @@ function Board(props) {
             <BoardItem key={row.brdnum} row={row}></BoardItem>
           ))}
         </Table>
-      </BoardContainer>
+      </SubContainer>
       <BottomContainer>
         <SaveButton to="Write">글쓰기</SaveButton>
       </BottomContainer>
@@ -32,40 +34,14 @@ function Board(props) {
   );
 }
 
-const MainContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 90%;
-`;
-
-const BoardContainer = styled.div`
+const SubContainer = styled.section`
   height: 90%;
   width: 90%;
 `;
 
-const BottomContainer = styled.div`
-  display: flex;
-  align-items: center;
-  height: 10%;
-  width: 90%;
-  border-top: 1px solid #bdc3c7;
-`;
-
-const SaveButton = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 60%;
-  border-radius: 5px;
-  border: 0;
+const SaveButton = styled(DefaultButton.withComponent(Link))`
   text-decoration: none;
   background-color: #0984e3;
-  color: #fff;
-  font-weight: bold;
 `;
 
 const Table = styled.table`
@@ -103,7 +79,7 @@ const TableDate = styled.th`
 
 // Reduecer의 state.boards를 boards로 받아주기
 function mapReduxStateToReactProps(state) {
-  return { boards: state.boards };
+  return { boards: state.board_reducer.boards };
 }
 
 export default connect(mapReduxStateToReactProps)(Board);
