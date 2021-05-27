@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import BoardItem from "./BoardItem";
-
 import styled from "styled-components";
+
+import { board_read } from "../../../redux/action";
+
 import { DefaultButton } from "../../modules/Button";
 import { MainContainer, BottomContainer } from "../../modules/Container";
+import BoardItem from "./BoardItem";
 
-function Board(props) {
-  const { boards } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
+function Board({ boards, dispatch, selectedBoard }) {
+  useEffect(() => {
+    dispatch(board_read(-1));
+  }, []);
 
   return (
     <MainContainer>
@@ -79,7 +83,10 @@ const TableDate = styled.th`
 
 // Reduecer의 state.boards를 boards로 받아주기
 function mapReduxStateToReactProps(state) {
-  return { boards: state.board_reducer.boards };
+  return {
+    boards: state.board_reducer.boards,
+    selectedBoard: state.board_reducer.selectedBoard,
+  };
 }
 
 export default connect(mapReduxStateToReactProps)(Board);

@@ -13,4 +13,16 @@ export const DefaultButton = styled.button`
   cursor: pointer;
   text-decoration: none;
   color: #fff;
+
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+
+  &:hover {
+    opacity: 0.7;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease ;
+  }
 `;

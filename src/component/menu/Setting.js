@@ -9,13 +9,15 @@ import { change_name } from "../../redux/action";
 
 const Setting = ({ dispatch, userState }) => {
   const [userName, setUseName] = useState(userState.name);
+  const [userMode, setUserMode] = useState(userState.mode);
 
   const handleChange = (e) => {
     setUseName(e.target.value);
   };
 
+  const handleToggle = () => {};
   const handleSaveName = () => {
-    if (window.confirm(userName + " 으로 이름을 변경할까요? 🤔") == true) {
+    if (window.confirm(userName + " 으로 아이디를 변경할까요? 🤔") === true) {
       dispatch(change_name(userName));
     }
   };
@@ -29,7 +31,7 @@ const Setting = ({ dispatch, userState }) => {
             fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
-          이름설정
+          아이디 설정
         </div>
         <div
           style={{
@@ -56,6 +58,11 @@ const Setting = ({ dispatch, userState }) => {
         >
           야간모드
         </div>
+        <input
+          type="checkbox"
+          checked={userMode}
+          onChange={handleToggle}
+        ></input>
       </SubContainer>
     </SettingContainer>
   );
@@ -95,7 +102,7 @@ const ConfirmButton = styled(DefaultButton)`
   width: 4rem;
   height: 2rem;
   font-size: 1rem;
-  background-color: #2980b9;
+  background-color: #0984e3;
   margin-left: 1rem;
 `;
 

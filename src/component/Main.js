@@ -117,9 +117,10 @@ const NavList = styled.li`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => (props.to === props.curpage ? "#000" : "#b2bec3")};
+  transition: color ease-in-out 0.3s;
   &:hover {
     color: #2d3436;
-    transition: color ease-in 0.3s;
+    transition: color ease-in-out 0.3s;
   }
 `;
 

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { board_create } from "../../../redux/action";
+
 import EditorComponent from "./EditorComponent.js";
 
 import styled from "styled-components";
 import { DefaultButton } from "../../modules/Button";
-
-import { board_create } from "../../../redux/action";
 
 function BoardWrite({ props, dispatch, selectedBoard, userName }) {
   const [title, setTitle] = useState("");
@@ -25,17 +25,21 @@ function BoardWrite({ props, dispatch, selectedBoard, userName }) {
   const handleSave = (e) => {
     e.preventDefault();
 
-    const saveData = {
-      brdnum: updateState ? selectedBoard.brdnum : -1,
-      title: title,
-      writer: userName,
-      desc: desc,
-      date: new Date(),
-    };
+    if (selectedBoard.writer === userName) {
+      const saveData = {
+        brdnum: updateState ? selectedBoard.brdnum : -1,
+        title: title,
+        writer: userName,
+        desc: desc,
+        date: new Date(),
+      };
 
-    dispatch(board_create(saveData));
+      dispatch(board_create(saveData));
 
-    props.history.push("/Board");
+      props.history.push("/Board");
+    }else{
+      alert("수정 권환이 없습니다! 🙄 (다른 아이디)")
+    }
   };
 
   // clean-up

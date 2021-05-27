@@ -7,7 +7,7 @@ const BOARD_READ = "READ";
 
 const userState = {
   name: "익명",
-  mode: "day",
+  mode: true,
 };
 
 const boardState = {
@@ -107,8 +107,12 @@ export function board_reducer(state = boardState, action) {
     case BOARD_READ:
       return {
         ...state,
-        selectedBoard: boards.find((row) => row.brdnum === action.brdnum),
+        selectedBoard:
+          action.brdnum === -1
+            ? {}
+            : boards.find((row) => row.brdnum === action.brdnum),
       };
+
     default:
       return state;
   }
