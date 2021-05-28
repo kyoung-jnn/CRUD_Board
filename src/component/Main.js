@@ -1,7 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Link, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
-import styled from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./modules/theme.js";
 
 import Home from "./menu/Home";
 import Board from "./menu/Board/Board";
@@ -15,13 +17,18 @@ const handleChangeMenu = (index, setCurPage) => {
   setCurPage({ page: index });
 };
 
-function Main() {
+function Main({ userState }) {
   const [curPage, setCurPage] = useState({ page: "/" });
+  const [userMode, setUserMode] = useState(userState.mode);
+  console.log(userMode);
   return (
-    <Fragment>
+    <ThemeProvider theme={userMode ? darkTheme : lightTheme}>
+      <GlobalStyles />
+      <OutterContainer></OutterContainer>
+
       <TitleText>REACT BOARD 📰</TitleText>
 
-      <MainContainer>
+      <InnerContainer>
         <NavMenu>
           <ul>
             <NavList>
@@ -67,18 +74,41 @@ function Main() {
             path="/Board"
             render={(props) => <Board props={props}></Board>}
           ></Route>
-          <Route path="/Setting" render={() => <Setting></Setting>}></Route>
+          <Route
+            path="/Setting"
+            render={() => (
+              <Setting userMode={userMode} setUserMode={setUserMode}></Setting>
+            )}
+          ></Route>
           <Route
             path="/Write"
             render={(props) => <Write props={props}></Write>}
           ></Route>
         </Switch>
-      </MainContainer>
-    </Fragment>
+      </InnerContainer>
+    </ThemeProvider>
   );
 }
 
-const MainContainer = styled.main`
+const GlobalStyles = createGlobalStyle`
+  main,div {
+    background-color: ${({ theme }) => theme.background};
+    transition: all 0.25s linear;
+  }
+  header,li{
+    color: ${({ theme }) => theme.titleText};
+  }
+`;
+
+const OutterContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+`;
+const InnerContainer = styled.main`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -88,7 +118,7 @@ const MainContainer = styled.main`
   top: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
-  box-shadow: 10px 10px 60px #bababa, -10px -10px 60px #fcfcfc;
+  box-shadow: 10px 10px 30px #fcfcfc;
   border-radius: 0px;
 `;
 
@@ -128,4 +158,8 @@ const NavGithub = styled(NavLink.withComponent("a"))`
   color: #b2bec3;
 `;
 
-export default Main;
+function mapReduxStateToReactProps(state) {
+  return { userState: state.userState_ruducer };
+}
+
+export default connect(mapReduxStateToReactProps)(Main);

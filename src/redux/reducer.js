@@ -7,7 +7,7 @@ const BOARD_READ = "READ";
 
 const userState = {
   name: "익명",
-  mode: true,
+  mode: false,
 };
 
 const boardState = {

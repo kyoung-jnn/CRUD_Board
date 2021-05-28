@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { DefaultButton } from "../modules/Button";
 import { MainContainer, SubContainer } from "../modules/Container";
 
 import { change_name } from "../../redux/action";
 
-const Setting = ({ dispatch, userState }) => {
+const Setting = ({ dispatch, userState, userMode, setUserMode }) => {
   const [userName, setUseName] = useState(userState.name);
-  const [userMode, setUserMode] = useState(userState.mode);
 
   const handleChange = (e) => {
     setUseName(e.target.value);
   };
 
-  const handleToggle = () => {};
+  const handleToggle = (e) => {
+    setUserMode(e.target.checked);
+  };
+
   const handleSaveName = () => {
     if (window.confirm(userName + " 으로 아이디를 변경할까요? 🤔") === true) {
       dispatch(change_name(userName));
@@ -58,11 +60,15 @@ const Setting = ({ dispatch, userState }) => {
         >
           야간모드
         </div>
-        <input
+        <SwitchInput
           type="checkbox"
           checked={userMode}
           onChange={handleToggle}
-        ></input>
+          id="switch-input"
+        ></SwitchInput>
+        <SwitchLabel htmlFor="switch-input">
+          <SwitchBall></SwitchBall>
+        </SwitchLabel>
       </SubContainer>
     </SettingContainer>
   );
@@ -83,15 +89,11 @@ const NameInput = styled.input`
   border-width: 0.3rem;
 
   border-color: #bdc3c7;
-  transition-property: border-color;
-  transition-duration: 1s;
-  transition-timing-function: ease-out;
+  transition: border-color 1s ease-out;
 
   &:hover {
     border-color: #2980b9;
-    transition-property: border-color;
-    transition-duration: 1s;
-    transition-timing-function: ease-out;
+    transition: border-color 1s ease-out;
   }
   &:focus {
     border-color: #2980b9;
@@ -104,6 +106,40 @@ const ConfirmButton = styled(DefaultButton)`
   font-size: 1rem;
   background-color: #0984e3;
   margin-left: 1rem;
+`;
+
+const SwitchInput = styled.input`
+  height: 0;
+  width: 0;
+  visibility: hidden;
+`;
+
+const SwitchLabel = styled.label`
+  position: relative;
+  width: 55px;
+  height: 28px;
+  cursor: pointer;
+  border-radius: 50px;
+
+  background-color: #bdc3c7;
+  ${SwitchInput}:checked + & {
+    background-color: #0984e3;
+  }
+  transition: background-color 0.4s ease;
+`;
+
+const SwitchBall = styled.div`
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  ${SwitchInput}:checked + ${SwitchLabel} & {
+    transform: translateX(26px);
+  }
+  transition: transform 0.4s ease;
 `;
 
 function mapReduxStateToReactProps(state) {
