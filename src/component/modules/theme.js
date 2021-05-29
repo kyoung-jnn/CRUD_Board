@@ -1,13 +1,13 @@
 export const lightTheme = {
   background: "#fff",
-  titleText: "#111",
-  linkText: "#111",
+  defaultText: "#111",
   unlinkText: "#b2bec3",
+  linkHover: "#353b48",
 };
 
 export const darkTheme = {
-  background: "#1e272e",
-  titleText: "#fff",
-  linkText: "#fff",
+  background: "#2f3640",
+  defaultText: "#fff",
   unlinkText: "#b2bec3",
+  linkHover: "#dcdde1",
 };

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./modules/theme.js";
+import styled, { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./modules/theme";
+import { GlobalStyles } from "./modules/GlobalStyles";
 
 import Home from "./menu/Home";
 import Board from "./menu/Board/Board";
@@ -20,7 +21,7 @@ const handleChangeMenu = (index, setCurPage) => {
 function Main({ userState }) {
   const [curPage, setCurPage] = useState({ page: "/" });
   const [userMode, setUserMode] = useState(userState.mode);
-  console.log(userMode);
+
   return (
     <ThemeProvider theme={userMode ? darkTheme : lightTheme}>
       <GlobalStyles />
@@ -90,16 +91,6 @@ function Main({ userState }) {
   );
 }
 
-const GlobalStyles = createGlobalStyle`
-  main,div {
-    background-color: ${({ theme }) => theme.background};
-    transition: all 0.25s linear;
-  }
-  header,li{
-    color: ${({ theme }) => theme.titleText};
-  }
-`;
-
 const OutterContainer = styled.div`
   position: absolute;
   width: 100%;
@@ -108,6 +99,7 @@ const OutterContainer = styled.div`
   left: 0;
   z-index: -1;
 `;
+
 const InnerContainer = styled.main`
   display: flex;
   flex-direction: column;
@@ -140,16 +132,19 @@ const NavList = styled.li`
   margin: 10px;
   padding: 0px;
   height: 0px;
-  font-size: 25px;
+  font-size: 1.5rem;
   font-family: "KOTRA_BOLD-Bold", sans-serif;
 `;
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${(props) => (props.to === props.curpage ? "#000" : "#b2bec3")};
+  color: ${(props) =>
+    props.to === props.curpage
+      ? props.theme.defaultText
+      : props.theme.unlinkText};
   transition: color ease-in-out 0.3s;
   &:hover {
-    color: #2d3436;
+    color: ${({ theme }) => theme.linkHover};
     transition: color ease-in-out 0.3s;
   }
 `;

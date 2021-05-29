@@ -27,14 +27,13 @@ const Setting = ({ dispatch, userState, userMode, setUserMode }) => {
   return (
     <SettingContainer>
       <SubContainer>
-        <div
+        <TitleText
           style={{
             fontSize: 30,
-            fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
           아이디 설정
-        </div>
+        </TitleText>
         <div
           style={{
             display: "flex",
@@ -52,14 +51,13 @@ const Setting = ({ dispatch, userState, userMode, setUserMode }) => {
         </div>
       </SubContainer>
       <SubContainer>
-        <div
+        <TitleText
           style={{
             fontSize: 30,
-            fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
           야간모드
-        </div>
+        </TitleText>
         <SwitchInput
           type="checkbox"
           checked={userMode}
@@ -79,18 +77,18 @@ const SettingContainer = styled(MainContainer)`
 `;
 
 const NameInput = styled.input`
-  font-size: 1rem;
-
   padding: 0.5rem;
   outline: none;
+  
+  font-size: 1rem;
+  color: ${(props) => props.theme.defaultText};
+
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-width: 0.3rem;
-
   border-color: #bdc3c7;
   transition: border-color 1s ease-out;
-
   &:hover {
     border-color: #2980b9;
     transition: border-color 1s ease-out;
@@ -140,6 +138,11 @@ const SwitchBall = styled.div`
     transform: translateX(26px);
   }
   transition: transform 0.4s ease;
+`;
+
+const TitleText = styled.article`
+  font-family: "KOTRA_BOLD-Bold";
+  color: ${(props) => props.theme.defaultText};
 `;
 
 function mapReduxStateToReactProps(state) {

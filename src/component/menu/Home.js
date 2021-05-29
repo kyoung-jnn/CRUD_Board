@@ -8,58 +8,34 @@ function Home() {
   return (
     <HomeContainer>
       <SubContainer>
-        <article
+        <TitleText
           style={{
             fontSize: 30,
-            fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
           토이 프로젝트 <span role="img">🎉</span>
-        </article>
-        <article
+        </TitleText>
+        <ContentText
           style={{
             fontSize: 20,
-            fontFamily: "NanumBarunGothic",
           }}
         >
           react를 이용한 게시판입니다. <span role="img">😊</span>
-        </article>
+        </ContentText>
       </SubContainer>
 
       <SubContainer>
-        <article
+        <TitleText
           style={{
             fontSize: 30,
-            fontFamily: "KOTRA_BOLD-Bold",
           }}
         >
           기술 스택 <span role="img">🔧</span>
-        </article>
+        </TitleText>
         <article>
-          <p
-            style={{
-              fontSize: 18,
-              fontFamily: "NanumBarunGothic",
-            }}
-          >
-            React
-          </p>
-          <p
-            style={{
-              fontSize: 18,
-              fontFamily: "NanumBarunGothic",
-            }}
-          >
-            Redux
-          </p>
-          <p
-            style={{
-              fontSize: 18,
-              fontFamily: "NanumBarunGothic",
-            }}
-          >
-            styled-component
-          </p>
+          <ContentText>React</ContentText>
+          <ContentText>Redux</ContentText>
+          <ContentText>styled-component</ContentText>
         </article>
       </SubContainer>
     </HomeContainer>
@@ -68,6 +44,16 @@ function Home() {
 
 const HomeContainer = styled(MainContainer)`
   align-items: flex-start;
+`;
+
+const TitleText = styled.article`
+  font-family: "KOTRA_BOLD-Bold";
+  color: ${(props) => props.theme.defaultText};
+`;
+
+const ContentText = styled.p`
+  font-family: "NanumBarunGothic";
+  color: ${(props) => props.theme.defaultText};
 `;
 
 export default Home;

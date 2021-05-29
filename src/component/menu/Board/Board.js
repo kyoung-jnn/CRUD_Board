@@ -9,7 +9,7 @@ import { DefaultButton } from "../../modules/Button";
 import { MainContainer, BottomContainer } from "../../modules/Container";
 import BoardItem from "./BoardItem";
 
-function Board({ boards, dispatch, selectedBoard }) {
+function Board({ boards, dispatch }) {
   useEffect(() => {
     dispatch(board_read(-1));
   }, []);
@@ -85,7 +85,6 @@ const TableDate = styled.th`
 function mapReduxStateToReactProps(state) {
   return {
     boards: state.board_reducer.boards,
-    selectedBoard: state.board_reducer.selectedBoard,
   };
 }
 
