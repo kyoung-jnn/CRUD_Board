@@ -49,6 +49,7 @@ const Title = styled.article`
   height: 60px;
   font-size: 30px;
   font-family: "KOTRA_BOLD-Bold", sans-serif;
+  color: ${(props) => props.theme.defaultText};
 `;
 const Writer = styled.article`
   height: 5%;
@@ -56,12 +57,14 @@ const Writer = styled.article`
   padding-bottom: 3%;
   font-size: 20px;
   font-family: "KOTRA_BOLD-Bold", sans-serif;
+  color: ${(props) => props.theme.defaultText};
 `;
 const Desc = styled.div`
   height: 76%;
   padding: 3%;
   font-size: 1.2em;
   font-family: "NanumBarunGothic", sans-serif;
+  color: ${(props) => props.theme.defaultText};
 `;
 
 const EditButton = styled(DefaultButton.withComponent(Link))`

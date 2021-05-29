@@ -3,6 +3,8 @@ import { board_read } from "../../../redux/action";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import styled from "styled-components";
+
 function BoardItem({ row, dispatch }) {
   const handleDetail = (brdnum) => {
     dispatch(board_read(brdnum));
@@ -13,13 +15,12 @@ function BoardItem({ row, dispatch }) {
       <tr style={{ height: 40, cursor: "pointer" }}>
         <td style={{ fontFamily: "NanumBarunGothic" }}>{row.brdnum}</td>
         <td style={{ fontFamily: "NanumBarunGothic", fontWeight: "bold" }}>
-          <Link
+          <BoardLink
             to={`/Board/${row.brdnum}`}
-            style={{ color: "#111", textDecoration: "none" }}
             onClick={() => handleDetail(row.brdnum)}
           >
             {row.title}
-          </Link>
+          </BoardLink>
         </td>
         <td style={{ fontFamily: "NanumBarunGothic" }}>{row.writer}</td>
         <td style={{ fontFamily: "NanumBarunGothic" }}>
@@ -29,5 +30,10 @@ function BoardItem({ row, dispatch }) {
     </thead>
   );
 }
+
+const BoardLink = styled(Link)`
+  text-decoration: none;
+  color: ${(props) => props.theme.defaultText};
+`;
 
 export default connect()(BoardItem);

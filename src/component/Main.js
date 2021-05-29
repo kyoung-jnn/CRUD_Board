@@ -107,11 +107,10 @@ const InnerContainer = styled.main`
   width: 60%;
   height: 80%;
   left: 50%;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
   margin: 0;
-  box-shadow: 10px 10px 30px #fcfcfc;
-  border-radius: 0px;
+  box-shadow: 5px 5px 20px -15px #1e272e, -5px -5px 20px -15px #1e272e;
 `;
 
 const TitleText = styled.header`
