@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import ReactQuill from "react-quill";
+import styled from "styled-components";
+
 import "react-quill/dist/quill.snow.css";
 
 class EditorComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   modules = {
     toolbar: [
       //[{ 'font': [] }],
@@ -45,8 +43,7 @@ class EditorComponent extends Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <ReactQuill
-        style={{ width: "100%", height: "75%" }}
+      <StyledReactQuill
         theme="snow"
         modules={this.modules}
         formats={this.formats}
@@ -59,4 +56,9 @@ class EditorComponent extends Component {
   }
 }
 
+const StyledReactQuill = styled(ReactQuill)`
+  width: 100%;
+  height: 75%;
+  color: ${(props) => props.theme.defaultText};
+`;
 export default EditorComponent;

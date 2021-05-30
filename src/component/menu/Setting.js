@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { DefaultButton } from "../modules/Button";
 import { MainContainer, SubContainer } from "../modules/Container";
+import { SwitchInput, SwitchLabel, SwitchBall } from "../modules/SwitchButton";
 
 import { change_name } from "../../redux/action";
 
@@ -79,7 +80,7 @@ const SettingContainer = styled(MainContainer)`
 const NameInput = styled.input`
   padding: 0.5rem;
   outline: none;
-  
+
   font-size: 1rem;
   color: ${(props) => props.theme.defaultText};
 
@@ -104,40 +105,6 @@ const ConfirmButton = styled(DefaultButton)`
   font-size: 1rem;
   background-color: #0984e3;
   margin-left: 1rem;
-`;
-
-const SwitchInput = styled.input`
-  height: 0;
-  width: 0;
-  visibility: hidden;
-`;
-
-const SwitchLabel = styled.label`
-  position: relative;
-  width: 55px;
-  height: 28px;
-  cursor: pointer;
-  border-radius: 50px;
-
-  background-color: #bdc3c7;
-  ${SwitchInput}:checked + & {
-    background-color: #0984e3;
-  }
-  transition: background-color 0.4s ease;
-`;
-
-const SwitchBall = styled.div`
-  position: absolute;
-  top: 4%;
-  left: 4%;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #fff;
-  ${SwitchInput}:checked + ${SwitchLabel} & {
-    transform: translateX(26px);
-  }
-  transition: transform 0.4s ease;
 `;
 
 const TitleText = styled.article`

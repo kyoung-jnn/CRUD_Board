@@ -11,7 +11,7 @@ const userState = {
 };
 
 const boardState = {
-  total: 3,
+  total: 4,
   boards: [
     {
       brdnum: 1,
@@ -32,6 +32,13 @@ const boardState = {
       writer: "어그로",
       title: "들어오세요~~",
       desc: "나가세요 😊",
+      date: new Date(),
+    },
+    {
+      brdnum: 4,
+      writer: "익명",
+      title: "수정 & 삭제 테스트는 여기서",
+      desc: "수정 & 삭제는 Redux를 통해 이루어집니다.<br/><br/> 게시글 작성자와 동일한 아이디일때 권한이 부여됩니다.",
       date: new Date(),
     },
   ],

@@ -8,7 +8,7 @@ export const DefaultButton = styled.button`
   height: 2rem;
   font-size: 1rem;
   font-weight: bold;
-  border-radius: 10%;
+  border-radius: 5%;
   border: 0;
   cursor: pointer;
   text-decoration: none;

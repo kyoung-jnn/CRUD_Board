@@ -1,20 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+import { MainContainer, BottomContainer } from "../../modules/Container";
+import { DefaultButton } from "../../modules/Button";
 
 import { board_delete } from "../../../redux/action";
 
-import styled from "styled-components";
-import { DefaultButton } from "../../modules/Button";
-import { MainContainer, BottomContainer } from "../../modules/Container";
+function BoardDetail({ props, dispatch, selectedBoard, userName }) {
+  const handleEdit = () => {
+    if (selectedBoard.writer === userName) {
+      props.history.push("/Write");
+    } else {
+      alert("수정 권한이 없습니다! 🙄 (다른 아이디)");
+    }
+  };
 
-const handleRemove = (history, dispatch, brdnum) => {
-  dispatch(board_delete(brdnum));
-  history.push("/Board");
-};
-
-function BoardDetail(props) {
-  const { history, dispatch, selectedBoard } = props; // mapReduxStateToReactProps 메소드 이용해서 reducer의 state 가져오기
+  const handleRemove = (e) => {
+    if (selectedBoard.writer === userName) {
+      if (window.confirm("현재 글을 삭제할까요?") === true) {
+        dispatch(board_delete(selectedBoard.brdnum));
+        props.history.push("/Board");
+      }
+    } else {
+      alert("삭제 권한이 없습니다! 🙄 (다른 아이디)");
+    }
+  };
 
   return (
     <MainContainer>
@@ -26,12 +37,8 @@ function BoardDetail(props) {
         <Desc dangerouslySetInnerHTML={{ __html: selectedBoard.desc }}></Desc>
       </SubContainer>
       <BottomContainer>
-        <EditButton to="/Write">수정하기</EditButton>
-        <DeleteButton
-          onClick={() => handleRemove(history, dispatch, selectedBoard.brdnum)}
-        >
-          삭제하기
-        </DeleteButton>
+        <EditButton onClick={handleEdit}>수정하기</EditButton>
+        <DeleteButton onClick={handleRemove}>삭제하기</DeleteButton>
       </BottomContainer>
     </MainContainer>
   );
@@ -67,8 +74,7 @@ const Desc = styled.div`
   color: ${(props) => props.theme.defaultText};
 `;
 
-const EditButton = styled(DefaultButton.withComponent(Link))`
-  text-decoration: none;
+const EditButton = styled(DefaultButton)`
   background-color: #0984e3;
 `;
 
@@ -78,7 +84,10 @@ const DeleteButton = styled(DefaultButton)`
 
 // Reduecer의 state.boards를 boards로 받아주기
 function mapReduxStateToReactProps(state) {
-  return { selectedBoard: state.board_reducer.selectedBoard };
+  return {
+    selectedBoard: state.board_reducer.selectedBoard,
+    userName: state.userState_ruducer.name,
+  };
 }
 
 export default connect(mapReduxStateToReactProps)(BoardDetail);

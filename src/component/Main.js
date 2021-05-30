@@ -8,7 +8,6 @@ import { GlobalStyles } from "./modules/GlobalStyles";
 
 import Home from "./menu/Home";
 import Board from "./menu/Board/Board";
-import BoardDetail from "./menu/Board/BoardDetail";
 import Setting from "./menu/Setting";
 import Write from "./menu/Board/BoardWrite";
 
@@ -27,7 +26,12 @@ function Main({ userState }) {
       <GlobalStyles />
       <OutterContainer></OutterContainer>
 
-      <TitleText>REACT BOARD 📰</TitleText>
+      <TitleText>
+        REACT BOARD  
+        <span role="img" aria-label="emoji">
+          📰
+        </span>
+      </TitleText>
 
       <InnerContainer>
         <NavMenu>
@@ -44,7 +48,7 @@ function Main({ userState }) {
             <NavList>
               <NavLink
                 curpage={curPage.page}
-                to="Board"
+                to="/Board"
                 onClick={() => handleChangeMenu("Board", setCurPage)}
               >
                 자유게시판
@@ -59,7 +63,7 @@ function Main({ userState }) {
             <NavList>
               <NavLink
                 curpage={curPage.page}
-                to="Setting"
+                to="/Setting"
                 onClick={() => handleChangeMenu("Setting", setCurPage)}
               >
                 설정
@@ -70,7 +74,6 @@ function Main({ userState }) {
 
         <Switch>
           <Route exact path="/" render={() => <Home></Home>}></Route>
-          <Route path="/Board/:title" component={BoardDetail}></Route>
           <Route
             path="/Board"
             render={(props) => <Board props={props}></Board>}

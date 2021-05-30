@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
-import { board_create } from "../../../redux/action";
-
+import { MainContainer, BottomContainer } from "../../modules/Container";
 import EditorComponent from "./EditorComponent.js";
 
-import styled from "styled-components";
 import { DefaultButton } from "../../modules/Button";
+
+import { board_create } from "../../../redux/action";
 
 function BoardWrite({ props, dispatch, selectedBoard, userName }) {
   const [title, setTitle] = useState("");
@@ -25,26 +26,20 @@ function BoardWrite({ props, dispatch, selectedBoard, userName }) {
   const handleSave = (e) => {
     e.preventDefault();
 
-    if (selectedBoard.writer === userName) {
-      const saveData = {
-        brdnum: updateState ? selectedBoard.brdnum : -1,
-        title: title,
-        writer: userName,
-        desc: desc,
-        date: new Date(),
-      };
-
-      dispatch(board_create(saveData));
-
-      props.history.push("/Board");
-    }else{
-      alert("수정 권환이 없습니다! 🙄 (다른 아이디)")
-    }
+    const saveData = {
+      brdnum: updateState ? selectedBoard.brdnum : -1,
+      title: title,
+      writer: userName,
+      desc: desc,
+      date: new Date(),
+    };
+    dispatch(board_create(saveData));
+    props.history.push("/Board");
   };
 
   // clean-up
   useEffect(() => {
-    const unBlock = props.history.block("정말 떠나실 건가요?");
+    const unBlock = props.history.block("글쓰기를 종료할까요?");
 
     return () => {
       unBlock();
@@ -54,9 +49,9 @@ function BoardWrite({ props, dispatch, selectedBoard, userName }) {
   useEffect(() => {
     if (updateState) {
       setTitle(selectedBoard.title);
-      setDesc(title.desc);
+      setDesc(selectedBoard.desc);
     }
-  }, []);
+  }, [updateState, selectedBoard]);
 
   return (
     <MainContainer>
@@ -77,16 +72,7 @@ function BoardWrite({ props, dispatch, selectedBoard, userName }) {
   );
 }
 
-const MainContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 90%;
-`;
-
-const TopContainer = styled.div`
+const TopContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,14 +84,7 @@ const TitleInput = styled.input`
   width: 98%;
   height: 5%;
   margin-bottom: 10px;
-`;
-
-const BottomContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 90%;
-  height: 10%;
-  border-top: 1px solid #bdc3c7;
+  color: ${(props) => props.theme.defaultText};
 `;
 
 const SaveButton = styled(DefaultButton.withComponent(Link))`
