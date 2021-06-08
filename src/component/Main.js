@@ -39,7 +39,7 @@ function Main({ userState }) {
             <NavList>
               <NavLink
                 curpage={curPage.page}
-                to="/"
+                to="/CRUD_Board/"
                 onClick={() => handleChangeMenu("/", setCurPage)}
               >
                 홈
@@ -48,7 +48,7 @@ function Main({ userState }) {
             <NavList>
               <NavLink
                 curpage={curPage.page}
-                to="/Board"
+                to="/CRUD_Board/Board"
                 onClick={() => handleChangeMenu("Board", setCurPage)}
               >
                 자유게시판
@@ -63,7 +63,7 @@ function Main({ userState }) {
             <NavList>
               <NavLink
                 curpage={curPage.page}
-                to="/Setting"
+                to="/CRUD_Board/Setting"
                 onClick={() => handleChangeMenu("Setting", setCurPage)}
               >
                 설정
@@ -73,19 +73,19 @@ function Main({ userState }) {
         </NavMenu>
 
         <Switch>
-          <Route exact path="/" render={() => <Home></Home>}></Route>
+          <Route exact path="/CRUD_Board/" render={() => <Home></Home>}></Route>
           <Route
-            path="/Board"
+            path="/CRUD_Board/Board"
             render={(props) => <Board props={props}></Board>}
           ></Route>
           <Route
-            path="/Setting"
+            path="/CRUD_Board/Setting"
             render={() => (
               <Setting userMode={userMode} setUserMode={setUserMode}></Setting>
             )}
           ></Route>
           <Route
-            path="/Write"
+            path="/CRUD_Board/Write"
             render={(props) => <Write props={props}></Write>}
           ></Route>
         </Switch>

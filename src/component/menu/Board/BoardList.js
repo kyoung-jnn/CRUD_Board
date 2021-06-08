@@ -34,7 +34,7 @@ function BoardList({ boards, dispatch }) {
         </Table>
       </SubContainer>
       <BottomContainer>
-        <SaveButton to="Write">글쓰기</SaveButton>
+        <SaveButton to="/CRUD_Board/Write">글쓰기</SaveButton>
       </BottomContainer>
     </MainContainer>
   );

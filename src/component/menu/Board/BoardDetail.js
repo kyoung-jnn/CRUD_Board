@@ -10,7 +10,7 @@ import { board_delete } from "../../../redux/action";
 function BoardDetail({ props, dispatch, selectedBoard, userName }) {
   const handleEdit = () => {
     if (selectedBoard.writer === userName) {
-      props.history.push("/Write");
+      props.history.push("/CRUD_Board/Write");
     } else {
       alert("수정 권한이 없습니다! 🙄 (다른 아이디)");
     }
@@ -20,7 +20,7 @@ function BoardDetail({ props, dispatch, selectedBoard, userName }) {
     if (selectedBoard.writer === userName) {
       if (window.confirm("현재 글을 삭제할까요?") === true) {
         dispatch(board_delete(selectedBoard.brdnum));
-        props.history.push("/Board");
+        props.history.push("/CRUD_Board/Board");
       }
     } else {
       alert("삭제 권한이 없습니다! 🙄 (다른 아이디)");

@@ -16,7 +16,7 @@ function BoardItem({ row, dispatch }) {
         <td style={{ fontFamily: "NanumBarunGothic" }}>{row.brdnum}</td>
         <td style={{ fontFamily: "NanumBarunGothic", fontWeight: "bold" }}>
           <BoardLink
-            to={`/Board/${row.brdnum}`}
+            to={`/CRUD_Board/Board/${row.brdnum}`}
             onClick={() => handleDetail(row.brdnum)}
           >
             {row.title}

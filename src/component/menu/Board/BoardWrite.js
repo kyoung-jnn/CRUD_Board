@@ -34,7 +34,7 @@ function BoardWrite({ props, dispatch, selectedBoard, userName }) {
       date: new Date(),
     };
     dispatch(board_create(saveData));
-    props.history.push("/Board");
+    props.history.push("/CRUD_Board/Board");
   };
 
   // clean-up
@@ -64,7 +64,7 @@ function BoardWrite({ props, dispatch, selectedBoard, userName }) {
         <EditorComponent value={desc} onChange={onEditorChange} />
       </TopContainer>
       <BottomContainer>
-        <SaveButton to="Board" onClick={handleSave}>
+        <SaveButton to="/CRUD_Board/Board" onClick={handleSave}>
           저장
         </SaveButton>
       </BottomContainer>
