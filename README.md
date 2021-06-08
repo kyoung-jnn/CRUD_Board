@@ -9,14 +9,6 @@
 
 게시글 작성시 위즈윅은 **react-quill**을 사용했습니다.
 
-### 설치
-
-```
-// 웹 보기
-npm install
-npm start
-```
-
 ## 프로젝트 기술 Stack ⚙️
 
 ![JavaScript badge](http://img.shields.io/badge/JavaScript-ES6-yellow?logoColor=white&labelColor=yellow&style=flat-square&logo=JavaScript)
