@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/crud_board/static/css/main.be0b2c1a.chunk.css",
-    "main.js": "/crud_board/static/js/main.5fd28a3d.chunk.js",
-    "main.js.map": "/crud_board/static/js/main.5fd28a3d.chunk.js.map",
-    "runtime-main.js": "/crud_board/static/js/runtime-main.55e04f0e.js",
-    "runtime-main.js.map": "/crud_board/static/js/runtime-main.55e04f0e.js.map",
-    "static/css/2.ad76a385.chunk.css": "/crud_board/static/css/2.ad76a385.chunk.css",
-    "static/js/2.136fe038.chunk.js": "/crud_board/static/js/2.136fe038.chunk.js",
-    "static/js/2.136fe038.chunk.js.map": "/crud_board/static/js/2.136fe038.chunk.js.map",
-    "index.html": "/crud_board/index.html",
-    "precache-manifest.52412815e3c21269e8bad93be8b83363.js": "/crud_board/precache-manifest.52412815e3c21269e8bad93be8b83363.js",
-    "service-worker.js": "/crud_board/service-worker.js",
-    "static/css/2.ad76a385.chunk.css.map": "/crud_board/static/css/2.ad76a385.chunk.css.map",
-    "static/css/main.be0b2c1a.chunk.css.map": "/crud_board/static/css/main.be0b2c1a.chunk.css.map",
-    "static/js/2.136fe038.chunk.js.LICENSE.txt": "/crud_board/static/js/2.136fe038.chunk.js.LICENSE.txt"
+    "main.css": "/CRUD_Board/static/css/main.be0b2c1a.chunk.css",
+    "main.js": "/CRUD_Board/static/js/main.d9b6cdac.chunk.js",
+    "main.js.map": "/CRUD_Board/static/js/main.d9b6cdac.chunk.js.map",
+    "runtime-main.js": "/CRUD_Board/static/js/runtime-main.0aab12a4.js",
+    "runtime-main.js.map": "/CRUD_Board/static/js/runtime-main.0aab12a4.js.map",
+    "static/css/2.ad76a385.chunk.css": "/CRUD_Board/static/css/2.ad76a385.chunk.css",
+    "static/js/2.a84f56b9.chunk.js": "/CRUD_Board/static/js/2.a84f56b9.chunk.js",
+    "static/js/2.a84f56b9.chunk.js.map": "/CRUD_Board/static/js/2.a84f56b9.chunk.js.map",
+    "index.html": "/CRUD_Board/index.html",
+    "precache-manifest.81f4e3bead5ace343bc3fdc6dcfab06c.js": "/CRUD_Board/precache-manifest.81f4e3bead5ace343bc3fdc6dcfab06c.js",
+    "service-worker.js": "/CRUD_Board/service-worker.js",
+    "static/css/2.ad76a385.chunk.css.map": "/CRUD_Board/static/css/2.ad76a385.chunk.css.map",
+    "static/css/main.be0b2c1a.chunk.css.map": "/CRUD_Board/static/css/main.be0b2c1a.chunk.css.map",
+    "static/js/2.a84f56b9.chunk.js.LICENSE.txt": "/CRUD_Board/static/js/2.a84f56b9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.55e04f0e.js",
+    "static/js/runtime-main.0aab12a4.js",
     "static/css/2.ad76a385.chunk.css",
-    "static/js/2.136fe038.chunk.js",
+    "static/js/2.a84f56b9.chunk.js",
     "static/css/main.be0b2c1a.chunk.css",
-    "static/js/main.5fd28a3d.chunk.js"
+    "static/js/main.d9b6cdac.chunk.js"
   ]
 }
